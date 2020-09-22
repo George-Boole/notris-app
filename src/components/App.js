@@ -110,6 +110,8 @@ class App extends Component {
         case "KeyR":
           this.props.reset();
           break;
+        default:
+          return null;
       }
     });
 
@@ -180,9 +182,7 @@ class App extends Component {
             if (tile === 6) {
               return <div className="filled-tile t-block" key={index}></div>;
             }
-            if (tile === 7) {
-              return <div className="filled-tile z-block" key={index}></div>;
-            }
+            return <div className="filled-tile z-block" key={index}></div>;
           })}
         </div>
       );
