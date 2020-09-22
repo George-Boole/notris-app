@@ -1,13 +1,93 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.btn div {
+  display: inline;
+}
+
+.playfield {
+  /* box-sizing: border-box; */
+  position: relative;
+  font-size: 0%;
+  margin: auto;
+  margin-top: 4%;
+  margin-bottom: 0%;
+  height: 90vmin;
+  width: 50vmin;
+  background-color: skyblue;
+  border: 1vmin solid violet;
+}
+
+.empty-tile {
+  box-sizing: border-box;
+  position: relative;
+  display: inline-block;
+  height: 5vmin;
+  width: 5vmin;
+  /* background-color: skyblue; */
+  /* border: solid thin blue; */
+}
+
+.filled-tile {
+  box-sizing: border-box;
+  display: inline-block;
+  height: 5vmin;
+  width: 5vmin;
+  background-color: orange;
+  border: solid thick black;
+  /* margin: solid thin black; */
+}
+
+.i-block {
+  background-color: #98fb98;
+  /* background-color: #ffd700; */
+}
+
+.j-block {
+  background-color: #800080;
+}
+
+.l-block {
+  /* background-color: #fa8072; */
+  background-color: #ff00ff;
+}
+
+.o-block {
+  background-color: #fcd12a;
+}
+
+.s-block {
+  background-color: #ff2800;
+}
+
+.t-block {
+  background-color: #2832c2;
+}
+
+.z-block {
+  background-color: #0fffaf;
+}
+
+/* .blank-tile {
+  box-sizing: border-box;
+  display: inline-block;
+  height: 5vmin;
+  width: 5vmin;
+} */
+
+/* .active-block {
+  position: absolute;
+  top: 0;
+  left: 0;
+} */
