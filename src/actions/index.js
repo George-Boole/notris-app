@@ -62,7 +62,6 @@ const clearRows = (field) => {
 };
 
 export default {
-  spawnBlock,
   reset,
   moveLeft,
   moveRight,
