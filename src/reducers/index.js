@@ -1,10 +1,6 @@
 import { combineReducers } from "redux";
 import blocks from "../blocks";
-import {
-  mergeMatrices,
-  rotateRight,
-  rotateLeft,
-} from "../functions/matrixFuncs";
+import { rotateRight, rotateLeft } from "../functions/matrixFuncs";
 
 const emptyField = [
   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -41,7 +37,6 @@ const fieldReducer = (field = emptyField, action) => {
 
 const activeBlockReducer = (block = blocks.generateRandomBlock(), action) => {
   switch (action.type) {
-    case "BLOCK_SPAWNED":
     case "BLOCK_PLACED":
     case "RESET":
       return blocks.generateRandomBlock();
@@ -56,7 +51,6 @@ const activeBlockReducer = (block = blocks.generateRandomBlock(), action) => {
 
 const xValueReducer = (xValue = 3, action) => {
   switch (action.type) {
-    case "BLOCK_SPAWNED":
     case "BLOCK_PLACED":
     case "RESET":
       return 3;
@@ -71,7 +65,6 @@ const xValueReducer = (xValue = 3, action) => {
 
 const yValueReducer = (yValue = 0, action) => {
   switch (action.type) {
-    case "BLOCK_SPAWNED":
     case "BLOCK_PLACED":
     case "RESET":
       return 0;

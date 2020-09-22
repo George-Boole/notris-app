@@ -5,12 +5,8 @@ import actions from "../actions";
 import {
   mergeMatrices,
   detectHit,
-  rotateRight,
-  rotateLeft,
   clearFilledRows,
 } from "../functions/matrixFuncs";
-
-import blocks from "../blocks";
 
 class App extends Component {
   componentDidMount() {
@@ -113,10 +109,6 @@ class App extends Component {
         //   break;
         case "KeyR":
           this.props.reset();
-          // if (this.props.activeBlock.length === 2) {
-          //   this.props.moveRight();
-          //   this.props.moveDown();
-          // }
           break;
       }
     });
@@ -158,23 +150,6 @@ class App extends Component {
   }
 
   renderField() {
-    // setTimeout(() => {
-    //   this.props.moveDown();
-    //   if (this.hitDetected()) {
-    //     this.props.moveUp();
-    //     this.props.placeBlock(
-    //       mergeMatrices(
-    //         this.props.field,
-    //         this.props.activeBlock,
-    //         this.props.xValue,
-    //         this.props.yValue
-    //       )
-    //     );
-    //   }
-
-    //   // this.props.setDropTimer(this.props.dropTimer);
-    // }, this.props.dropTimer);
-
     return mergeMatrices(
       this.props.field,
       this.props.activeBlock,
@@ -223,7 +198,6 @@ class App extends Component {
           <div onClick={() => this.props.moveRight()}>Right </div>
           <div onClick={() => this.props.moveDown()}>Down </div>
         </div>
-        <div onClick={() => this.props.spawnBlock()}>SpawnBlock </div>
         <div onClick={() => this.props.rotateRight(this.props.activeBlock)}>
           RotateRight{" "}
         </div> */}
@@ -245,7 +219,6 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = {
-  spawnBlock: actions.spawnBlock,
   reset: actions.reset,
   moveLeft: actions.moveLeft,
   moveRight: actions.moveRight,

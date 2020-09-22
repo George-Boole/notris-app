@@ -1,11 +1,3 @@
-import blocks from "../blocks";
-
-const spawnBlock = () => {
-  return {
-    type: "BLOCK_SPAWNED",
-  };
-};
-
 const reset = () => {
   return {
     type: "RESET",
