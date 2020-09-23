@@ -18,16 +18,23 @@ class App extends Component {
       switch (e.code) {
         case "KeyA":
         case "ArrowLeft":
+        case "Numpad4":
+          e.preventDefault();
           this.props.moveLeft();
           if (this.hitDetected()) this.props.moveRight();
           break;
         case "KeyD":
         case "ArrowRight":
+        case "Numpad6":
+          e.preventDefault();
           this.props.moveRight();
           if (this.hitDetected()) this.props.moveLeft();
           break;
         case "KeyS":
         case "ArrowDown":
+        case "Numpad5":
+        case "Numpad2":
+          e.preventDefault();
           this.props.moveDown();
           if (this.hitDetected()) {
             this.props.moveUp();
@@ -48,6 +55,8 @@ class App extends Component {
           break;
         case "ArrowUp":
         case "KeyE":
+        case "Numpad8":
+          e.preventDefault();
           this.props.rotateRight(this.props.activeBlock);
           if (this.hitDetected()) this.props.moveRight();
           if (this.hitDetected()) {
@@ -77,6 +86,9 @@ class App extends Component {
         case "KeyZ":
         case "KeyW":
         case "Slash":
+        case "Numpad7":
+        case "NumpadDivide":
+          e.preventDefault();
           this.props.rotateLeft(this.props.activeBlock);
           if (this.hitDetected()) this.props.moveRight();
           if (this.hitDetected()) {
@@ -108,6 +120,7 @@ class App extends Component {
         //   if (this.hitDetected()) this.props.moveDown();
         //   break;
         case "KeyR":
+          e.preventDefault();
           this.props.reset();
           break;
         default:
@@ -165,24 +178,52 @@ class App extends Component {
               return <div className="empty-tile" key={index}></div>;
             }
             if (tile === 1) {
-              return <div className="filled-tile i-block" key={index}></div>;
+              return (
+                <div className="filled-tile" key={index}>
+                  <div className="i block"></div>
+                </div>
+              );
             }
             if (tile === 2) {
-              return <div className="filled-tile j-block" key={index}></div>;
+              return (
+                <div className="filled-tile" key={index}>
+                  <div className="j block"></div>
+                </div>
+              );
             }
             if (tile === 3) {
-              return <div className="filled-tile l-block" key={index}></div>;
+              return (
+                <div className="filled-tile" key={index}>
+                  <div className="l block"></div>
+                </div>
+              );
             }
             if (tile === 4) {
-              return <div className="filled-tile o-block" key={index}></div>;
+              return (
+                <div className="filled-tile" key={index}>
+                  <div className="o block"></div>
+                </div>
+              );
             }
             if (tile === 5) {
-              return <div className="filled-tile s-block" key={index}></div>;
+              return (
+                <div className="filled-tile" key={index}>
+                  <div className="s block"></div>
+                </div>
+              );
             }
             if (tile === 6) {
-              return <div className="filled-tile t-block" key={index}></div>;
+              return (
+                <div className="filled-tile" key={index}>
+                  <div className="t block"></div>
+                </div>
+              );
             }
-            return <div className="filled-tile z-block" key={index}></div>;
+            return (
+              <div className="filled-tile" key={index}>
+                <div className="z block"></div>
+              </div>
+            );
           })}
         </div>
       );

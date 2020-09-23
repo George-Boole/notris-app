@@ -21,8 +21,8 @@ code {
   position: relative;
   font-size: 0%;
   margin: auto;
-  margin-top: 4%;
-  margin-bottom: 0%;
+  /* margin-top: 4vmin; */
+  /* margin-bottom: 5vmin; */
   height: 90vmin;
   width: 50vmin;
   background-color: skyblue;
@@ -40,42 +40,54 @@ code {
 }
 
 .filled-tile {
+  position: relative;
   box-sizing: border-box;
   display: inline-block;
   height: 5vmin;
   width: 5vmin;
-  background-color: orange;
-  border: solid thick black;
+  background-color: black;
+  border-radius: 10%;
+  /* border: solid 1px #172327; */
+  /* border: solid thick black; */
   /* margin: solid thin black; */
 }
 
-.i-block {
+.block {
+  position: absolute;
+  height: 75%;
+  width: 75%;
+  right: 12.5%;
+  top: 12.5%;
+  border-radius: 15%;
+}
+
+.i {
   background-color: #98fb98;
   /* background-color: #ffd700; */
 }
 
-.j-block {
+.j {
   background-color: #800080;
 }
 
-.l-block {
+.l {
   /* background-color: #fa8072; */
   background-color: #ff00ff;
 }
 
-.o-block {
-  background-color: #fcd12a;
-}
-
-.s-block {
+.o {
   background-color: #ff2800;
 }
 
-.t-block {
+.s {
+  background-color: #fcd12a;
+}
+
+.t {
   background-color: #2832c2;
 }
 
-.z-block {
+.z {
   background-color: #0fffaf;
 }
 
@@ -85,3 +97,9 @@ code {
   height: 5vmin;
   width: 5vmin;
 } */
+
+.reset {
+  text-align: center;
+  font-size: medium;
+  margin: 0.1rem;
+}

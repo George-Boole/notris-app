@@ -10,6 +10,7 @@ import reducers from "./reducers";
 ReactDOM.render(
   <Provider store={createStore(reducers)}>
     <App />
+    <h6 className="reset">Press 'R' to reset</h6>
   </Provider>,
   document.querySelector("#root")
 );
