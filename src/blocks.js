@@ -48,6 +48,17 @@ const generateRandomBlock = () => {
   return blocks[Math.floor(Math.random() * 7)];
 };
 
+const generateRandomSequenceOfBlocks = () => {
+  for (let i = blocks.length - 1; i > 0; i--) {
+    const index = Math.floor(Math.random() * i);
+    const block = blocks[i];
+    blocks[i] = blocks[index];
+    blocks[index] = block;
+  }
+
+  return blocks;
+};
+
 export default {
   iBlock,
   jBlock,
@@ -57,4 +68,5 @@ export default {
   tBlock,
   zBlock,
   generateRandomBlock,
+  generateRandomSequenceOfBlocks,
 };

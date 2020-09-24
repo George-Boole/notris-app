@@ -61,6 +61,25 @@ const clearRows = (field) => {
   };
 };
 
+const setActiveBlock = (block) => {
+  return {
+    type: "SET_ACTIVE_BLOCK",
+    payload: block,
+  };
+};
+
+const getNewSequenceOfBlocks = () => {
+  return {
+    type: "NEW_SEQUENCE",
+  };
+};
+
+// const pause = () => {
+//   return {
+//     type: "PAUSE",
+//   };
+// };
+
 export default {
   reset,
   moveLeft,
@@ -72,4 +91,7 @@ export default {
   placeBlock,
   setDropTimer,
   clearRows,
+  setActiveBlock,
+  getNewSequenceOfBlocks,
+  // pause,
 };

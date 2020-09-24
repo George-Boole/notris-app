@@ -35,15 +35,14 @@ const fieldReducer = (field = emptyField, action) => {
   }
 };
 
-const activeBlockReducer = (block = blocks.generateRandomBlock(), action) => {
+const activeBlockReducer = (block = blocks.iBlock, action) => {
   switch (action.type) {
-    case "BLOCK_PLACED":
-    case "RESET":
-      return blocks.generateRandomBlock();
     case "ROTATE_RIGHT":
       return rotateRight(block);
     case "ROTATE_LEFT":
       return rotateLeft(block);
+    case "SET_ACTIVE_BLOCK":
+      return action.payload;
     default:
       return block;
   }
@@ -86,10 +85,37 @@ const dropTimerReducer = (dropTimer = 1000, action) => {
   }
 };
 
+const currentSequenceOfBlocksReducer = (
+  currentSequenceOfBlocks = blocks.generateRandomSequenceOfBlocks(),
+  action
+) => {
+  switch (action.type) {
+    case "NEW_SEQUENCE":
+    case "RESET":
+      return blocks.generateRandomSequenceOfBlocks();
+    default:
+      return currentSequenceOfBlocks;
+  }
+};
+
+const indexOfNextBlockReducer = (indexOfNextBlock = 0, action) => {
+  switch (action.type) {
+    case "NEW_SEQUENCE":
+    case "RESET":
+      return 0;
+    case "BLOCK_PLACED":
+      return indexOfNextBlock + 1;
+    default:
+      return indexOfNextBlock;
+  }
+};
+
 export default combineReducers({
   field: fieldReducer,
   activeBlock: activeBlockReducer,
   xValue: xValueReducer,
   yValue: yValueReducer,
   dropTimer: dropTimerReducer,
+  currentSequenceOfBlocks: currentSequenceOfBlocksReducer,
+  indexOfNextBlock: indexOfNextBlockReducer,
 });

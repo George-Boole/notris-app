@@ -10,11 +10,9 @@ import {
 
 class App extends Component {
   componentDidMount() {
-    window.addEventListener("keydown", (e) => {
-      // if (e.defaultPrevented) {
-      //   return;
-      // }
+    this.props.setActiveBlock(this.props.currentSequenceOfBlocks[0]);
 
+    window.addEventListener("keydown", (e) => {
       switch (e.code) {
         case "KeyA":
         case "ArrowLeft":
@@ -47,10 +45,16 @@ class App extends Component {
               )
             );
             this.props.clearRows(clearFilledRows(this.props.field));
+            if (this.props.indexOfNextBlock > 6)
+              this.props.getNewSequenceOfBlocks();
+            this.props.setActiveBlock(
+              this.props.currentSequenceOfBlocks[this.props.indexOfNextBlock]
+            );
           }
           if (this.hitDetected()) {
             setTimeout(alert("GAME OVER"), this.props.dropTimer);
             this.props.reset();
+            this.props.setActiveBlock(this.props.currentSequenceOfBlocks[0]);
           }
           break;
         case "ArrowUp":
@@ -115,13 +119,10 @@ class App extends Component {
             this.props.rotateRight(this.props.activeBlock);
           }
           break;
-        // case "KeyW":
-        //   this.props.moveUp();
-        //   if (this.hitDetected()) this.props.moveDown();
-        //   break;
         case "KeyR":
           e.preventDefault();
           this.props.reset();
+          this.props.setActiveBlock(this.props.currentSequenceOfBlocks[0]);
           break;
         default:
           return null;
@@ -147,10 +148,16 @@ class App extends Component {
           )
         );
         this.props.clearRows(clearFilledRows(this.props.field));
+        if (this.props.indexOfNextBlock > 6)
+          this.props.getNewSequenceOfBlocks();
+        this.props.setActiveBlock(
+          this.props.currentSequenceOfBlocks[this.props.indexOfNextBlock]
+        );
       }
       if (this.hitDetected()) {
         setTimeout(alert("GAME OVER"), this.props.dropTimer);
         this.props.reset();
+        this.props.setActiveBlock(this.props.currentSequenceOfBlocks[0]);
       }
     }, this.props.dropTimer);
   }
@@ -256,6 +263,8 @@ const mapStateToProps = (state) => {
     xValue: state.xValue,
     yValue: state.yValue,
     dropTimer: state.dropTimer,
+    currentSequenceOfBlocks: state.currentSequenceOfBlocks,
+    indexOfNextBlock: state.indexOfNextBlock,
   };
 };
 
@@ -270,6 +279,8 @@ const mapDispatchToProps = {
   placeBlock: actions.placeBlock,
   setDropTimer: actions.setDropTimer,
   clearRows: actions.clearRows,
+  setActiveBlock: actions.setActiveBlock,
+  getNewSequenceOfBlocks: actions.getNewSequenceOfBlocks,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

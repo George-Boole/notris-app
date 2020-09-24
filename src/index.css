@@ -36,7 +36,10 @@ code {
   height: 5vmin;
   width: 5vmin;
   /* background-color: skyblue; */
-  /* border: solid thin blue; */
+  /* border: solid 1px #81c5e0; */
+  /* border: solid 1px #78b6cf; */
+  /* border-left: solid 1px #78b6cf; */
+  /* border-right: solid 1px #78b6cf; */
 }
 
 .filled-tile {
