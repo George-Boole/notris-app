@@ -74,11 +74,17 @@ const getNewSequenceOfBlocks = () => {
   };
 };
 
-// const pause = () => {
-//   return {
-//     type: "PAUSE",
-//   };
-// };
+const pause = () => {
+  return {
+    type: "PAUSE",
+  };
+};
+
+const unpause = () => {
+  return {
+    type: "UNPAUSE",
+  };
+};
 
 export default {
   reset,
@@ -93,5 +99,6 @@ export default {
   clearRows,
   setActiveBlock,
   getNewSequenceOfBlocks,
-  // pause,
+  pause,
+  unpause,
 };

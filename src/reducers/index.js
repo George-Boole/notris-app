@@ -110,6 +110,18 @@ const indexOfNextBlockReducer = (indexOfNextBlock = 0, action) => {
   }
 };
 
+const pausedReducer = (paused = false, action) => {
+  switch (action.type) {
+    case "PAUSE":
+      return true;
+    case "UNPAUSE":
+    case "RESET":
+      return false;
+    default:
+      return paused;
+  }
+};
+
 export default combineReducers({
   field: fieldReducer,
   activeBlock: activeBlockReducer,
@@ -118,4 +130,5 @@ export default combineReducers({
   dropTimer: dropTimerReducer,
   currentSequenceOfBlocks: currentSequenceOfBlocksReducer,
   indexOfNextBlock: indexOfNextBlockReducer,
+  paused: pausedReducer,
 });
