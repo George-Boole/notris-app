@@ -76,7 +76,7 @@ const yValueReducer = (yValue = 0, action) => {
   }
 };
 
-const dropTimerReducer = (dropTimer = 1000, action) => {
+const dropTimerReducer = (dropTimer = 887, action) => {
   switch (action.type) {
     case "DROP_TIMER_SET":
       return action.payload;
@@ -122,6 +122,19 @@ const pausedReducer = (paused = false, action) => {
   }
 };
 
+const startLevel = 0;
+
+const levelReducer = (level = startLevel, action) => {
+  switch (action.type) {
+    case "LEVEL_UP":
+      return level < 20 ? level + 1 : "FINAL";
+    case "RESET":
+      return startLevel;
+    default:
+      return level;
+  }
+};
+
 export default combineReducers({
   field: fieldReducer,
   activeBlock: activeBlockReducer,
@@ -131,4 +144,5 @@ export default combineReducers({
   currentSequenceOfBlocks: currentSequenceOfBlocksReducer,
   indexOfNextBlock: indexOfNextBlockReducer,
   paused: pausedReducer,
+  level: levelReducer,
 });
