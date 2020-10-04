@@ -86,6 +86,20 @@ const unpause = () => {
   };
 };
 
+const setSoftDroppingTo = (softDropping) => {
+  return {
+    type: "SET_SOFT_DROP",
+    payload: softDropping,
+  };
+};
+
+const setGameOverTo = (gameOver) => {
+  return {
+    type: "SET_GAME_OVER",
+    payload: gameOver,
+  };
+};
+
 export default {
   reset,
   moveLeft,
@@ -101,4 +115,6 @@ export default {
   getNewSequenceOfBlocks,
   pause,
   unpause,
+  setSoftDroppingTo,
+  setGameOverTo,
 };

@@ -36,9 +36,13 @@ class App extends Component {
         case "ArrowDown":
         case "Numpad5":
         case "Numpad2":
-          if (!this.props.paused) {
+          if (this.props.paused === false && this.props.gameOver === false) {
             e.preventDefault();
-            if (softDropping === false) {
+            if (
+              this.props.softDropping === false
+              // &&
+              // this.props.dropTimer !== 50
+            ) {
               window.addEventListener(
                 "keyup",
                 (evt) => {
@@ -49,18 +53,17 @@ class App extends Component {
                   // case "Numpad5":
                   // case "Numpad2":
                   //   clearDropInterval();
-                  //   setDropInterval();
+                  //   setDropInterval(this.props.dropTimer);
                   //   console.log("keyup");
-                  //   softDropping = false;
+                  //   this.props.setSoftDroppingTo(false);
                   //   break;
                   // default:
                   // return null;
 
                   clearDropInterval();
-                  setDropInterval();
-                  // setSoftDropInterval();
-                  console.log("keyup");
-                  softDropping = false;
+                  setDropInterval(this.props.dropTimer);
+                  // setDropInterval(50);
+                  this.props.setSoftDroppingTo(false);
                   // }
                 },
                 {
@@ -68,42 +71,15 @@ class App extends Component {
                 }
               );
               clearDropInterval();
-              setSoftDropInterval();
-              softDropping = true;
+              setDropInterval(50);
+              this.props.setSoftDroppingTo(true);
             }
-            console.log("keydown fired");
-
-            // this.props.moveDown();
-            // if (this.hitDetected()) {
-            //   this.props.moveUp();
-            //   this.props.placeBlock(
-            //     mergeMatrices(
-            //       this.props.field,
-            //       this.props.activeBlock,
-            //       this.props.xValue,
-            //       this.props.yValue
-            //     )
-            //   );
-            //   this.props.clearRows(clearFilledRows(this.props.field));
-            //   if (this.props.indexOfNextBlock > 6)
-            //     this.props.getNewSequenceOfBlocks();
-            //   this.props.setActiveBlock(
-            //     this.props.currentSequenceOfBlocks[this.props.indexOfNextBlock]
-            //   );
-            // }
-            // if (this.hitDetected()) {
-            //   setTimeout(alert("GAME OVER"), this.props.dropTimer);
-            //   this.props.reset();
-            //   clearDropInterval();
-            //   setDropInterval();
-            //   this.props.setActiveBlock(this.props.currentSequenceOfBlocks[0]);
-            // }
           }
           break;
         case "ArrowUp":
         case "KeyE":
         case "Numpad8":
-          if (!this.props.paused) {
+          if (this.props.paused === false && this.props.gameOver === false) {
             e.preventDefault();
             this.props.rotateRight(this.props.activeBlock);
             if (this.hitDetected()) this.props.moveRight();
@@ -170,17 +146,29 @@ class App extends Component {
           e.preventDefault();
           this.props.reset();
           clearDropInterval();
-          setDropInterval();
           this.props.setActiveBlock(this.props.currentSequenceOfBlocks[0]);
+          setDropInterval(this.props.dropTimer);
+          break;
+        case "Enter":
+          if (this.props.gameOver) {
+            e.preventDefault();
+            this.props.reset();
+            clearDropInterval();
+            this.props.setActiveBlock(this.props.currentSequenceOfBlocks[0]);
+            setDropInterval(this.props.dropTimer);
+          }
           break;
         case "KeyP":
         case "KeyK":
-          if (this.props.paused === false) {
-            this.props.pause();
-            clearDropInterval();
-          } else if (this.props.paused === true) {
-            this.props.unpause();
-            setDropInterval();
+          if (!this.props.gameOver) {
+            if (!this.props.paused) {
+              this.props.pause();
+              clearDropInterval();
+            } else {
+              this.props.unpause();
+              clearDropInterval();
+              setDropInterval(this.props.dropTimer);
+            }
           }
           break;
         default:
@@ -189,9 +177,8 @@ class App extends Component {
     });
 
     let intervalId;
-    let softDropping = false;
 
-    const setDropInterval = () => {
+    const setDropInterval = (dropRate) => {
       intervalId = setInterval(() => {
         this.props.moveDown();
         if (this.hitDetected()) {
@@ -212,50 +199,17 @@ class App extends Component {
           );
         }
         if (this.hitDetected()) {
-          setTimeout(alert("GAME OVER"), this.props.dropTimer);
-          this.props.reset();
+          this.props.setGameOverTo(true);
           clearDropInterval();
-          setDropInterval();
-          this.props.setActiveBlock(this.props.currentSequenceOfBlocks[0]);
         }
-      }, this.props.dropTimer);
-    };
-
-    const setSoftDropInterval = () => {
-      intervalId = setInterval(() => {
-        this.props.moveDown();
-        if (this.hitDetected()) {
-          this.props.moveUp();
-          this.props.placeBlock(
-            mergeMatrices(
-              this.props.field,
-              this.props.activeBlock,
-              this.props.xValue,
-              this.props.yValue
-            )
-          );
-          this.props.clearRows(clearFilledRows(this.props.field));
-          if (this.props.indexOfNextBlock > 6)
-            this.props.getNewSequenceOfBlocks();
-          this.props.setActiveBlock(
-            this.props.currentSequenceOfBlocks[this.props.indexOfNextBlock]
-          );
-        }
-        if (this.hitDetected()) {
-          setTimeout(alert("GAME OVER"), this.props.dropTimer);
-          this.props.reset();
-          clearDropInterval();
-          setDropInterval();
-          this.props.setActiveBlock(this.props.currentSequenceOfBlocks[0]);
-        }
-      }, 50);
+      }, dropRate);
     };
 
     const clearDropInterval = () => {
       clearInterval(intervalId);
     };
 
-    setDropInterval();
+    setDropInterval(this.props.dropTimer);
   }
 
   hitDetected() {
@@ -264,6 +218,15 @@ class App extends Component {
       this.props.activeBlock,
       this.props.xValue,
       this.props.yValue
+    );
+  }
+
+  renderGameOver() {
+    return (
+      <div className="game-over">
+        <h3>GAME OVER</h3>
+        <span>Press R or Enter to Play Again</span>
+      </div>
     );
   }
 
@@ -349,7 +312,10 @@ class App extends Component {
           RotateRight{" "}
         </div> */}
 
-        <div className="playfield">{this.renderField()}</div>
+        <div className="playfield">
+          {this.props.gameOver && this.renderGameOver()}
+          {this.renderField()}
+        </div>
       </>
     );
   }
@@ -365,6 +331,8 @@ const mapStateToProps = (state) => {
     currentSequenceOfBlocks: state.currentSequenceOfBlocks,
     indexOfNextBlock: state.indexOfNextBlock,
     paused: state.paused,
+    softDropping: state.softDropping,
+    gameOver: state.gameOver,
   };
 };
 
@@ -383,6 +351,8 @@ const mapDispatchToProps = {
   getNewSequenceOfBlocks: actions.getNewSequenceOfBlocks,
   pause: actions.pause,
   unpause: actions.unpause,
+  setSoftDroppingTo: actions.setSoftDroppingTo,
+  setGameOverTo: actions.setGameOverTo,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

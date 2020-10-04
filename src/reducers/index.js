@@ -80,6 +80,8 @@ const dropTimerReducer = (dropTimer = 887, action) => {
   switch (action.type) {
     case "DROP_TIMER_SET":
       return action.payload;
+    case "RESET":
+      return 887;
     default:
       return dropTimer;
   }
@@ -135,6 +137,28 @@ const levelReducer = (level = startLevel, action) => {
   }
 };
 
+const softDroppingReducer = (softDropping = false, action) => {
+  switch (action.type) {
+    case "SET_SOFT_DROP":
+      return action.payload;
+    case "RESET":
+      return false;
+    default:
+      return softDropping;
+  }
+};
+
+const gameOverReducer = (gameOver = false, action) => {
+  switch (action.type) {
+    case "SET_GAME_OVER":
+      return action.payload;
+    case "RESET":
+      return false;
+    default:
+      return gameOver;
+  }
+};
+
 export default combineReducers({
   field: fieldReducer,
   activeBlock: activeBlockReducer,
@@ -145,4 +169,6 @@ export default combineReducers({
   indexOfNextBlock: indexOfNextBlockReducer,
   paused: pausedReducer,
   level: levelReducer,
+  softDropping: softDroppingReducer,
+  gameOver: gameOverReducer,
 });
