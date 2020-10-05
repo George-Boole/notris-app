@@ -100,6 +100,13 @@ const setGameOverTo = (gameOver) => {
   };
 };
 
+const levelUp = (number) => {
+  return {
+    type: "LEVEL_UP",
+    payload: number,
+  };
+};
+
 export default {
   reset,
   moveLeft,
@@ -117,4 +124,5 @@ export default {
   unpause,
   setSoftDroppingTo,
   setGameOverTo,
+  levelUp,
 };

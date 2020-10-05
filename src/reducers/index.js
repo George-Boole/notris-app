@@ -126,17 +126,6 @@ const pausedReducer = (paused = false, action) => {
 
 const startLevel = 0;
 
-const levelReducer = (level = startLevel, action) => {
-  switch (action.type) {
-    case "LEVEL_UP":
-      return level < 20 ? level + 1 : "FINAL";
-    case "RESET":
-      return startLevel;
-    default:
-      return level;
-  }
-};
-
 const softDroppingReducer = (softDropping = false, action) => {
   switch (action.type) {
     case "SET_SOFT_DROP":
@@ -159,6 +148,17 @@ const gameOverReducer = (gameOver = false, action) => {
   }
 };
 
+const levelReducer = (level = startLevel, action) => {
+  switch (action.type) {
+    case "LEVEL_UP":
+      return level < 20 ? level + action.payload : "FINAL";
+    case "RESET":
+      return startLevel;
+    default:
+      return level;
+  }
+};
+
 export default combineReducers({
   field: fieldReducer,
   activeBlock: activeBlockReducer,
@@ -168,7 +168,7 @@ export default combineReducers({
   currentSequenceOfBlocks: currentSequenceOfBlocksReducer,
   indexOfNextBlock: indexOfNextBlockReducer,
   paused: pausedReducer,
-  level: levelReducer,
   softDropping: softDroppingReducer,
   gameOver: gameOverReducer,
+  level: levelReducer,
 });

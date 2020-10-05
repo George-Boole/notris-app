@@ -5,6 +5,7 @@ import actions from "../actions";
 import {
   mergeMatrices,
   detectHit,
+  countFilledRows,
   clearFilledRows,
 } from "../functions/matrixFuncs";
 
@@ -38,40 +39,23 @@ class App extends Component {
         case "Numpad2":
           if (this.props.paused === false && this.props.gameOver === false) {
             e.preventDefault();
-            if (
-              this.props.softDropping === false
-              // &&
-              // this.props.dropTimer !== 50
-            ) {
+            if (this.props.softDropping === false) {
               window.addEventListener(
                 "keyup",
                 (evt) => {
                   evt.preventDefault();
-                  // switch (evt.code) {
-                  // case "KeyS":
-                  // case "ArrowDown":
-                  // case "Numpad5":
-                  // case "Numpad2":
-                  //   clearDropInterval();
-                  //   setDropInterval(this.props.dropTimer);
-                  //   console.log("keyup");
-                  //   this.props.setSoftDroppingTo(false);
-                  //   break;
-                  // default:
-                  // return null;
-
                   clearDropInterval();
                   setDropInterval(this.props.dropTimer);
-                  // setDropInterval(50);
                   this.props.setSoftDroppingTo(false);
-                  // }
                 },
                 {
                   once: true,
                 }
               );
               clearDropInterval();
-              setDropInterval(50);
+              setDropInterval(
+                this.props.dropTimer > 50 ? 50 : this.props.dropTimer
+              );
               this.props.setSoftDroppingTo(true);
             }
           }
@@ -176,6 +160,31 @@ class App extends Component {
       }
     });
 
+    const dropRateTable = [
+      887,
+      887,
+      887,
+      887,
+      887,
+      887,
+      887,
+      887,
+      887,
+      887,
+      887,
+      887,
+      887,
+      887,
+      887,
+      887,
+      887,
+      887,
+      887,
+      887,
+      887,
+      887,
+    ];
+
     let intervalId;
 
     const setDropInterval = (dropRate) => {
@@ -191,7 +200,11 @@ class App extends Component {
               this.props.yValue
             )
           );
+          this.props.levelUp(
+            Math.round((countFilledRows(this.props.field) / 10) * 10) / 10
+          );
           this.props.clearRows(clearFilledRows(this.props.field));
+          this.props.setDropTimer(dropRateTable[Math.floor(this.props.level)]);
           if (this.props.indexOfNextBlock > 6)
             this.props.getNewSequenceOfBlocks();
           this.props.setActiveBlock(
@@ -313,6 +326,8 @@ class App extends Component {
         </div> */}
 
         <div className="playfield">
+          <h2 className="lvl">LEVEL:</h2>
+          <h2 className="lvl num">{this.props.level + 1}</h2>
           {this.props.gameOver && this.renderGameOver()}
           {this.renderField()}
         </div>
@@ -333,6 +348,7 @@ const mapStateToProps = (state) => {
     paused: state.paused,
     softDropping: state.softDropping,
     gameOver: state.gameOver,
+    level: state.level,
   };
 };
 
@@ -353,6 +369,7 @@ const mapDispatchToProps = {
   unpause: actions.unpause,
   setSoftDroppingTo: actions.setSoftDroppingTo,
   setGameOverTo: actions.setGameOverTo,
+  levelUp: actions.levelUp,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

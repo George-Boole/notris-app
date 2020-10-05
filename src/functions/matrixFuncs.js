@@ -66,6 +66,18 @@ export const rotateLeft = (block) => {
   return newBlock;
 };
 
+export const countFilledRows = (field) => {
+  let numOfFilledRows = 0;
+
+  field.forEach((row) => {
+    if (!row.includes(0)) {
+      numOfFilledRows++;
+    }
+  });
+
+  return numOfFilledRows;
+};
+
 export const clearFilledRows = (field) => {
   const emptyRow = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
   let numberOfFilledRows = 0;

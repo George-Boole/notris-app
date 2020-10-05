@@ -121,3 +121,24 @@ code {
 .game-over span {
   font-size: 5vmin;
 }
+
+.lvl {
+  position: absolute;
+  text-align: center;
+
+  height: 10vmin;
+  width: 16vmin;
+  background-color: skyblue;
+  color: violet;
+  font-size: 5vmin;
+  top: -5.2vmin;
+  left: 50.17vmin;
+  border: 1vmin solid violet;
+  padding: 0;
+}
+
+.num {
+  top: 0;
+  font-size: 8vmin;
+  line-height: 10vmin;
+}
