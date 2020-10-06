@@ -54,7 +54,9 @@ class App extends Component {
               );
               clearDropInterval();
               setDropInterval(
-                this.props.dropTimer > 50 ? 50 : this.props.dropTimer
+                // this.props.dropTimer > 50 ?
+                50
+                // : this.props.dropTimer
               );
               this.props.setSoftDroppingTo(true);
             }
@@ -141,6 +143,12 @@ class App extends Component {
             this.props.setActiveBlock(this.props.currentSequenceOfBlocks[0]);
             setDropInterval(this.props.dropTimer);
           }
+          if (this.props.paused) {
+            e.preventDefault();
+            this.props.unpause();
+            clearDropInterval();
+            setDropInterval(this.props.dropTimer);
+          }
           break;
         case "KeyP":
         case "KeyK":
@@ -162,27 +170,26 @@ class App extends Component {
 
     const dropRateTable = [
       887,
-      887,
-      887,
-      887,
-      887,
-      887,
-      887,
-      887,
-      887,
-      887,
-      887,
-      887,
-      887,
-      887,
-      887,
-      887,
-      887,
-      887,
-      887,
-      887,
-      887,
-      887,
+      820,
+      753,
+      686,
+      619,
+      552,
+      469,
+      368,
+      285,
+      184,
+      167,
+      151,
+      134,
+      117,
+      100,
+      92,
+      83,
+      75,
+      67,
+      58,
+      50,
     ];
 
     let intervalId;
@@ -200,11 +207,14 @@ class App extends Component {
               this.props.yValue
             )
           );
-          this.props.levelUp(
-            Math.round((countFilledRows(this.props.field) / 10) * 10) / 10
-          );
+          this.props.addToLines(countFilledRows(this.props.field));
           this.props.clearRows(clearFilledRows(this.props.field));
-          this.props.setDropTimer(dropRateTable[Math.floor(this.props.level)]);
+          this.props.setLevel(
+            Math.floor(this.props.lines / 10) < 20
+              ? Math.floor(this.props.lines / 10)
+              : 20
+          );
+          this.props.setDropTimer(dropRateTable[this.props.level]);
           if (this.props.indexOfNextBlock > 6)
             this.props.getNewSequenceOfBlocks();
           this.props.setActiveBlock(
@@ -309,7 +319,12 @@ class App extends Component {
         );
       });
     }
-    return <div className="pause-screen">PAUSED</div>;
+    return (
+      <div className="pause-screen">
+        <h3>PAUSED</h3>
+        <span>Press P or Enter to Resume</span>
+      </div>
+    );
   }
 
   render() {
@@ -326,8 +341,18 @@ class App extends Component {
         </div> */}
 
         <div className="playfield">
-          <h2 className="lvl">LEVEL:</h2>
-          <h2 className="lvl num">{this.props.level + 1}</h2>
+          <div className="side-panel">
+            <h2 className="lvl">
+              LEVEL:
+              <h2 className="lvl num">
+                {this.props.level + 1 < 21 ? this.props.level + 1 : "MAX"}
+              </h2>
+            </h2>
+            <h2 className="lines">
+              LINES:
+              <h2 className="lines num">{this.props.lines}</h2>
+            </h2>
+          </div>
           {this.props.gameOver && this.renderGameOver()}
           {this.renderField()}
         </div>
@@ -348,6 +373,7 @@ const mapStateToProps = (state) => {
     paused: state.paused,
     softDropping: state.softDropping,
     gameOver: state.gameOver,
+    lines: state.lines,
     level: state.level,
   };
 };
@@ -369,7 +395,8 @@ const mapDispatchToProps = {
   unpause: actions.unpause,
   setSoftDroppingTo: actions.setSoftDroppingTo,
   setGameOverTo: actions.setGameOverTo,
-  levelUp: actions.levelUp,
+  addToLines: actions.addToLines,
+  setLevel: actions.setLevel,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

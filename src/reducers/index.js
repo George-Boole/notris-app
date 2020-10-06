@@ -124,8 +124,6 @@ const pausedReducer = (paused = false, action) => {
   }
 };
 
-const startLevel = 0;
-
 const softDroppingReducer = (softDropping = false, action) => {
   switch (action.type) {
     case "SET_SOFT_DROP":
@@ -148,12 +146,23 @@ const gameOverReducer = (gameOver = false, action) => {
   }
 };
 
-const levelReducer = (level = startLevel, action) => {
+const linesReducer = (lines = 0, action) => {
   switch (action.type) {
-    case "LEVEL_UP":
-      return level < 20 ? level + action.payload : "FINAL";
+    case "ADD_TO_LINES":
+      return lines + action.payload;
     case "RESET":
-      return startLevel;
+      return 0;
+    default:
+      return lines;
+  }
+};
+
+const levelReducer = (level = 0, action) => {
+  switch (action.type) {
+    case "SET_LEVEL":
+      return action.payload;
+    case "RESET":
+      return 0;
     default:
       return level;
   }
@@ -170,5 +179,6 @@ export default combineReducers({
   paused: pausedReducer,
   softDropping: softDroppingReducer,
   gameOver: gameOverReducer,
+  lines: linesReducer,
   level: levelReducer,
 });

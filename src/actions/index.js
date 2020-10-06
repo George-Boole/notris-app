@@ -100,10 +100,17 @@ const setGameOverTo = (gameOver) => {
   };
 };
 
-const levelUp = (number) => {
+const addToLines = (number) => {
   return {
-    type: "LEVEL_UP",
+    type: "ADD_TO_LINES",
     payload: number,
+  };
+};
+
+const setLevel = (level) => {
+  return {
+    type: "SET_LEVEL",
+    payload: level,
   };
 };
 
@@ -124,5 +131,6 @@ export default {
   unpause,
   setSoftDroppingTo,
   setGameOverTo,
-  levelUp,
+  addToLines,
+  setLevel,
 };

@@ -89,14 +89,27 @@ code {
 }
 
 .pause-screen {
+  box-sizing: border-box;
   position: absolute;
+  padding-top: 11vmin;
   color: violet;
-  font-size: 12vmin;
   text-align: center;
   text-shadow: 1px 1px 0px black;
-  top: 40%;
-  width: 100%;
-  height: 60%;
+  top: 20%;
+  width: 50vmin;
+  height: 50vmin;
+  background-color: #0000008a;
+  border-radius: 12.5%;
+}
+
+.pause-screen h3 {
+  margin: 0;
+  font-size: 12vmin;
+  font-weight: normal;
+}
+
+.pause-screen span {
+  font-size: 5vmin;
 }
 
 .game-over {
@@ -122,12 +135,12 @@ code {
   font-size: 5vmin;
 }
 
+.lines,
 .lvl {
   position: absolute;
   text-align: center;
-
   height: 10vmin;
-  width: 16vmin;
+  width: 21vmin;
   background-color: skyblue;
   color: violet;
   font-size: 5vmin;
@@ -137,8 +150,13 @@ code {
   padding: 0;
 }
 
+.lines {
+  top: 14vmin;
+}
+
 .num {
   top: 0;
+  left: -1vmin;
   font-size: 8vmin;
   line-height: 10vmin;
 }
