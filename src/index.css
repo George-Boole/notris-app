@@ -136,11 +136,12 @@ code {
 }
 
 .lines,
-.lvl {
+.lvl,
+.next-block {
   position: absolute;
   text-align: center;
   height: 10vmin;
-  width: 21vmin;
+  width: 23vmin;
   background-color: skyblue;
   color: violet;
   font-size: 5vmin;
@@ -159,4 +160,19 @@ code {
   left: -1vmin;
   font-size: 8vmin;
   line-height: 10vmin;
+}
+
+.next-block {
+  display: none;
+  top: 33vmin;
+}
+
+.preview {
+  padding: 5vmin, 0, 5vmin, 0;
+  line-height: 0;
+  top: 7vmin;
+  left: -1vmin;
+  height: 20vmin;
+  width: 23vmin;
+  background-color: skyblue;
 }
