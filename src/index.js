@@ -11,7 +11,7 @@ ReactDOM.render(
   <Provider store={createStore(reducers)}>
     <App />
     <h6 className="controls">
-      P: Pause/Test<br></br>R: Reset
+      P: Pause<br></br>R: Reset
     </h6>
   </Provider>,
   document.querySelector("#root")
