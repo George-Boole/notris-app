@@ -53,11 +53,7 @@ class App extends Component {
                 }
               );
               clearDropInterval();
-              setDropInterval(
-                // this.props.dropTimer > 50 ?
-                50
-                // : this.props.dropTimer
-              );
+              setDropInterval(50);
               this.props.setSoftDroppingTo(true);
             }
           }
@@ -67,7 +63,6 @@ class App extends Component {
             e.preventDefault();
 
             // clearDropInterval();
-            console.log("space");
 
             while (!this.hitDetected()) {
               this.props.moveDown();
@@ -414,15 +409,32 @@ class App extends Component {
   render() {
     return (
       <>
-        {/* <div className="btn">
+        <div className="btn">
           <div onClick={() => this.props.reset()}>Reset </div>
-          <div onClick={() => this.props.moveLeft()}>Left </div>
+          <div onClick={() => this.props.pause()}>Pause </div>
+          <div
+            onClick={() => {
+              if (!this.props.paused) {
+                this.props.moveLeft();
+                console.log(this.hitDetected());
+                if (this.hitDetected()) {
+                  this.props.moveRight();
+                }
+              }
+              return;
+            }}
+          >
+            Left{" "}
+          </div>
           <div onClick={() => this.props.moveRight()}>Right </div>
           <div onClick={() => this.props.moveDown()}>Down </div>
+          <div onClick={() => this.props.rotateRight(this.props.activeBlock)}>
+            RotateRight{" "}
+          </div>
+          <div onClick={() => this.props.rotateLeft(this.props.activeBlock)}>
+            RotateLeft{" "}
+          </div>
         </div>
-        <div onClick={() => this.props.rotateRight(this.props.activeBlock)}>
-          RotateRight{" "}
-        </div> */}
 
         <div className="playfield">
           <div className="side-panel">

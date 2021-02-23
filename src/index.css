@@ -162,6 +162,10 @@ code {
   line-height: 10vmin;
 }
 
+.btn {
+  /* display: none; */
+}
+
 .next-block {
   display: none;
   top: 33vmin;
