@@ -513,8 +513,8 @@ class App extends Component {
     return (
       <>
         <div className="btns">
-          <div id="move-left">Left </div>
-          <div id="move-right">Right </div>
+          <div id="move-left"></div>
+          <div id="move-right"></div>
 
           <div
             id="soft-drop"
@@ -542,10 +542,8 @@ class App extends Component {
                 code: "ArrowDown",
               });
             }}
-          >
-            SoftDrop{" "}
-          </div>
-          <div id="hard-drop">HardDrop </div>
+          ></div>
+          <div id="hard-drop"></div>
 
           <div
             id="pause"
