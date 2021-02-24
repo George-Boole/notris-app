@@ -32,17 +32,17 @@ class App extends Component {
       }
     });
 
-    const softDrop = document.getElementById("soft-drop");
-    softDrop.addEventListener("touchstart", (e) => {
-      if (this.props.paused === false && this.props.gameOver === false) {
-        e.preventDefault();
-        if (this.props.softDropping === false) {
-          clearDropInterval();
-          setDropInterval(50);
-          this.props.setSoftDroppingTo(true);
-        }
-      }
-    });
+    // const softDrop = document.getElementById("soft-drop");
+    // softDrop.addEventListener("touchstart", (e) => {
+    //   if (this.props.paused === false && this.props.gameOver === false) {
+    //     e.preventDefault();
+    //     if (this.props.softDropping === false) {
+    //       clearDropInterval();
+    //       setDropInterval(50);
+    //       this.props.setSoftDroppingTo(true);
+    //     }
+    //   }
+    // });
 
     const hardDrop = document.getElementById("hard-drop");
     hardDrop.addEventListener("mousedown", (e) => {
@@ -518,8 +518,20 @@ class App extends Component {
 
           <div
             id="soft-drop"
+            onTouchStart={() => {
+              fireEvent.keyDown(window, {
+                key: "ArrowDown",
+                code: "ArrowDown",
+              });
+            }}
             onMouseDown={() => {
               fireEvent.keyDown(window, {
+                key: "ArrowDown",
+                code: "ArrowDown",
+              });
+            }}
+            onTouchEnd={() => {
+              fireEvent.keyUp(window, {
                 key: "ArrowDown",
                 code: "ArrowDown",
               });
