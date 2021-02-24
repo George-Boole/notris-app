@@ -228,7 +228,7 @@ code {
 #reset {
   position: fixed;
   bottom: 10vmin;
-  right: 10vmin;
+  right: 40vmin;
   height: 10vmin;
   width: 18vmin;
   border-radius: 500px;
@@ -251,12 +251,59 @@ code {
   transform: translate(50%, -50%);
 }
 
-#pause {
-  transform: translatey(-300%);
+#reset {
+  top: 5vmin;
+  left: 5vmin;
+}
+
+#rotate-left,
+#rotate-right {
+  position: fixed;
+  right: 5vmin;
+  bottom: 5vmin;
+  height: 20vmin;
+  width: 20vmin;
+  border-radius: 50%;
+}
+
+#rotate-right {
+  bottom: 35vmin;
+}
+
+#rotate-left:before,
+#rotate-right:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 8vmin;
+  width: 8vmin;
+  border-radius: 50%;
+  background-color: violet;
+  border: 2vmin solid skyblue;
+  border-bottom: 2vmin solid violet;
+}
+
+#rotate-left:after,
+#rotate-right:after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-bottom: 5vmin solid skyblue;
+  border-left: 5vmin solid transparent;
+  top: 50%;
+  right: 59%;
+}
+
+#rotate-right:after {
+  left: 59%;
+  transform: rotateY(180deg);
 }
 
 .next-block {
-  display: none;
+  /* display: none; */
   top: 33vmin;
 }
 

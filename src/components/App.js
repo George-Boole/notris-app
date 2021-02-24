@@ -566,8 +566,8 @@ class App extends Component {
             Reset{" "}
           </div>
 
-          <div id="rotate-left">RotateLeft </div>
-          <div id="rotate-right">RotateRight </div>
+          <div id="rotate-left"></div>
+          <div id="rotate-right"></div>
         </div>
 
         <div className="playfield">
