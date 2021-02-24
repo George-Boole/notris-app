@@ -162,8 +162,19 @@ code {
   line-height: 10vmin;
 }
 
-.btn {
-  display: none;
+.btns {
+  position: absolute;
+}
+
+.btns > div {
+  /* display: none; */
+  /* position: absolute; */
+  /* display: inline; */
+  height: 10vh;
+  margin-bottom: 2vh;
+  width: fit-content;
+  min-width: 100px;
+  background-color: red;
 }
 
 .next-block {

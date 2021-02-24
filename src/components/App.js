@@ -1,3 +1,4 @@
+import { fireEvent } from "@testing-library/react";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
@@ -12,6 +13,99 @@ import {
 class App extends Component {
   componentDidMount() {
     this.props.setActiveBlock(this.props.currentSequenceOfBlocks[0]);
+
+    const left = document.getElementById("move-left");
+    left.addEventListener("mousedown", (e) => {
+      if (!this.props.paused) {
+        e.preventDefault();
+        this.props.moveLeft();
+        if (this.hitDetected()) this.props.moveRight();
+      }
+    });
+
+    const right = document.getElementById("move-right");
+    right.addEventListener("mousedown", (e) => {
+      if (!this.props.paused) {
+        e.preventDefault();
+        this.props.moveRight();
+        if (this.hitDetected()) this.props.moveLeft();
+      }
+    });
+
+    const hardDrop = document.getElementById("hard-drop");
+    hardDrop.addEventListener("mousedown", (e) => {
+      if (this.props.paused === false && this.props.gameOver === false) {
+        e.preventDefault();
+        while (!this.hitDetected()) {
+          this.props.moveDown();
+        }
+        this.props.moveUp();
+      }
+    });
+
+    const rotateLeft = document.getElementById("rotate-left");
+    rotateLeft.addEventListener("mousedown", (e) => {
+      if (!this.props.paused) {
+        e.preventDefault();
+        this.props.rotateLeft(this.props.activeBlock);
+        if (this.hitDetected()) this.props.moveRight();
+        if (this.hitDetected()) {
+          this.props.moveLeft();
+          this.props.moveLeft();
+        }
+        if (this.hitDetected() && this.props.activeBlock.length === 4) {
+          this.props.moveRight();
+          this.props.moveRight();
+          this.props.moveRight();
+          if (this.hitDetected()) {
+            this.props.moveLeft();
+            this.props.moveLeft();
+            this.props.moveLeft();
+            this.props.moveLeft();
+          }
+          if (this.hitDetected()) {
+            this.props.moveRight();
+            this.props.moveRight();
+            this.props.rotateRight(this.props.activeBlock);
+          }
+        } else if (this.hitDetected()) {
+          this.props.moveRight();
+          this.props.rotateRight(this.props.activeBlock);
+        }
+      }
+    });
+
+    const rotateRight = document.getElementById("rotate-right");
+    rotateRight.addEventListener("mousedown", (e) => {
+      if (this.props.paused === false && this.props.gameOver === false) {
+        e.preventDefault();
+        this.props.rotateRight(this.props.activeBlock);
+        if (this.hitDetected()) this.props.moveRight();
+        if (this.hitDetected()) {
+          this.props.moveLeft();
+          this.props.moveLeft();
+        }
+        if (this.hitDetected() && this.props.activeBlock.length === 4) {
+          this.props.moveRight();
+          this.props.moveRight();
+          this.props.moveRight();
+          if (this.hitDetected()) {
+            this.props.moveLeft();
+            this.props.moveLeft();
+            this.props.moveLeft();
+            this.props.moveLeft();
+          }
+          if (this.hitDetected()) {
+            this.props.moveRight();
+            this.props.moveRight();
+            this.props.rotateLeft(this.props.activeBlock);
+          }
+        } else if (this.hitDetected()) {
+          this.props.moveRight();
+          this.props.rotateLeft(this.props.activeBlock);
+        }
+      }
+    });
 
     window.addEventListener("keydown", (e) => {
       switch (e.code) {
@@ -61,9 +155,6 @@ class App extends Component {
         case "Space":
           if (this.props.paused === false && this.props.gameOver === false) {
             e.preventDefault();
-
-            // clearDropInterval();
-
             while (!this.hitDetected()) {
               this.props.moveDown();
             }
@@ -409,31 +500,54 @@ class App extends Component {
   render() {
     return (
       <>
-        <div className="btn">
-          <div onClick={() => this.props.reset()}>Reset </div>
-          <div onClick={() => this.props.pause()}>Pause </div>
+        <div className="btns">
+          <div id="move-left">Left </div>
+          <div id="move-right">Right </div>
+
           <div
-            onClick={() => {
-              if (!this.props.paused) {
-                this.props.moveLeft();
-                console.log(this.hitDetected());
-                if (this.hitDetected()) {
-                  this.props.moveRight();
-                }
-              }
-              return;
+            id="soft-drop"
+            onMouseDown={() => {
+              fireEvent.keyDown(window, {
+                key: "ArrowDown",
+                code: "ArrowDown",
+              });
+            }}
+            onMouseUp={() => {
+              fireEvent.keyUp(window, {
+                key: "ArrowDown",
+                code: "ArrowDown",
+              });
             }}
           >
-            Left{" "}
+            SoftDrop{" "}
           </div>
-          <div onClick={() => this.props.moveRight()}>Right </div>
-          <div onClick={() => this.props.moveDown()}>Down </div>
-          <div onClick={() => this.props.rotateRight(this.props.activeBlock)}>
-            RotateRight{" "}
+          <div id="hard-drop">HardDrop </div>
+
+          <div
+            id="pause"
+            onMouseDown={() => {
+              fireEvent.keyDown(window, {
+                key: "p",
+                code: "KeyP",
+              });
+            }}
+          >
+            Pause{" "}
           </div>
-          <div onClick={() => this.props.rotateLeft(this.props.activeBlock)}>
-            RotateLeft{" "}
+          <div
+            id="reset"
+            onMouseDown={() => {
+              fireEvent.keyDown(window, {
+                key: "r",
+                code: "KeyR",
+              });
+            }}
+          >
+            Reset{" "}
           </div>
+
+          <div id="rotate-left">RotateLeft </div>
+          <div id="rotate-right">RotateRight </div>
         </div>
 
         <div className="playfield">
