@@ -32,6 +32,30 @@ class App extends Component {
       }
     });
 
+    const softDrop = document.getElementById("soft-drop");
+    softDrop.addEventListener("touchstart", (e) => {
+      if (this.props.paused === false && this.props.gameOver === false) {
+        e.preventDefault();
+        if (this.props.softDropping === false) {
+          window.addEventListener(
+            "keyup",
+            (evt) => {
+              evt.preventDefault();
+              clearDropInterval();
+              setDropInterval(this.props.dropTimer);
+              this.props.setSoftDroppingTo(false);
+            },
+            {
+              once: true,
+            }
+          );
+          clearDropInterval();
+          setDropInterval(50);
+          this.props.setSoftDroppingTo(true);
+        }
+      }
+    });
+
     const hardDrop = document.getElementById("hard-drop");
     hardDrop.addEventListener("mousedown", (e) => {
       if (this.props.paused === false && this.props.gameOver === false) {

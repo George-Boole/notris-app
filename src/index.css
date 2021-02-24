@@ -173,8 +173,8 @@ code {
   /* display: inline; */
   height: 10vh;
   margin-bottom: 2vh;
-  width: fit-content;
-  min-width: 100px;
+  width: 25vmin;
+  /* min-width: 100px; */
   background-color: red;
 }
 
