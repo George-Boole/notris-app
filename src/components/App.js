@@ -562,9 +562,7 @@ class App extends Component {
                 code: "KeyR",
               });
             }}
-          >
-            Reset{" "}
-          </div>
+          ></div>
 
           <div id="rotate-left"></div>
           <div id="rotate-right"></div>

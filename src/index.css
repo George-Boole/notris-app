@@ -171,14 +171,8 @@ code {
 }
 
 .btns > div {
-  /* display: none; */
-  /* position: absolute; */
-  /* display: inline; */
-  height: 8vh;
-  margin-bottom: 2vh;
-  width: 15vmin;
-  /* min-width: 100px; */
   background-color: violet;
+  filter: drop-shadow(0 0 5px black);
 }
 
 #move-left,
@@ -209,7 +203,6 @@ code {
   border-top: 6vmin solid transparent;
   border-left: 6vmin solid violet;
   border-bottom: 6vmin solid transparent;
-  /* filter: drop-shadow(); */
 }
 
 #hard-drop {
@@ -227,8 +220,8 @@ code {
 #pause,
 #reset {
   position: fixed;
-  bottom: 10vmin;
-  right: 40vmin;
+  bottom: 65vmin;
+  right: 6vmin;
   height: 10vmin;
   width: 18vmin;
   border-radius: 500px;
@@ -241,8 +234,8 @@ code {
   top: 50%;
   left: 50%;
   transform: translate(-150%, -50%);
-  height: 3vmin;
-  width: 1vmin;
+  height: 7vmin;
+  width: 2vmin;
   background-color: skyblue;
   border-radius: 100px;
 }
@@ -254,6 +247,34 @@ code {
 #reset {
   top: 5vmin;
   left: 5vmin;
+  /* left: 29vmin;
+  transform: translateX(-50%); */
+}
+
+#reset:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 5vmin;
+  width: 5vmin;
+  border-radius: 50%;
+  background-color: violet;
+  border: 1vmin solid skyblue;
+  border-top: 1vmin solid violet;
+}
+
+#reset:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -140%);
+  height: 3vmin;
+  width: 1vmin;
+  background-color: skyblue;
+  border-radius: 100px;
 }
 
 #rotate-left,
@@ -303,7 +324,7 @@ code {
 }
 
 .next-block {
-  /* display: none; */
+  display: none;
   top: 33vmin;
 }
 
