@@ -37,18 +37,6 @@ class App extends Component {
       if (this.props.paused === false && this.props.gameOver === false) {
         e.preventDefault();
         if (this.props.softDropping === false) {
-          window.addEventListener(
-            "keyup",
-            (evt) => {
-              evt.preventDefault();
-              clearDropInterval();
-              setDropInterval(this.props.dropTimer);
-              this.props.setSoftDroppingTo(false);
-            },
-            {
-              once: true,
-            }
-          );
           clearDropInterval();
           setDropInterval(50);
           this.props.setSoftDroppingTo(true);
