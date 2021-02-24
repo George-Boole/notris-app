@@ -1,12 +1,14 @@
 body {
   margin: 0;
   touch-action: none;
-  overscroll-behavior: contain;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* prevent pull to refresh */
+  overscroll-behavior: contain;
 }
 
 code {
@@ -172,7 +174,7 @@ code {
   /* display: none; */
   /* position: absolute; */
   /* display: inline; */
-  height: 10vh;
+  height: 8vh;
   margin-bottom: 2vh;
   width: 25vmin;
   /* min-width: 100px; */
