@@ -176,7 +176,7 @@ code {
   /* display: inline; */
   height: 8vh;
   margin-bottom: 2vh;
-  width: 25vmin;
+  width: 15vmin;
   /* min-width: 100px; */
   background-color: violet;
 }
@@ -188,8 +188,8 @@ code {
   position: fixed;
   height: 12vmin;
   width: 12vmin;
-  bottom: 44vmin;
-  left: 100px;
+  bottom: 23vmin;
+  left: 5vmin;
   border-top-left-radius: 10%;
   border-bottom-left-radius: 10%;
   border-top-right-radius: 4%;
@@ -222,6 +222,37 @@ code {
 
 #soft-drop {
   transform: rotateZ(-90deg) translate(-150%, 150%);
+}
+
+#pause,
+#reset {
+  position: fixed;
+  bottom: 10vmin;
+  right: 10vmin;
+  height: 5vmin;
+  width: 18vmin;
+  border-radius: 500px;
+}
+
+#pause:before,
+#pause:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-150%, -50%);
+  height: 3vmin;
+  width: 1vmin;
+  background-color: skyblue;
+  border-radius: 100px;
+}
+
+#pause:after {
+  transform: translate(50%, -50%);
+}
+
+#pause {
+  transform: translatey(-300%);
 }
 
 .next-block {

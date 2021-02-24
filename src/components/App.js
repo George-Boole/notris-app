@@ -553,9 +553,7 @@ class App extends Component {
                 code: "KeyP",
               });
             }}
-          >
-            Pause{" "}
-          </div>
+          ></div>
           <div
             id="reset"
             onMouseDown={() => {
