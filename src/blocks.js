@@ -44,9 +44,9 @@ const zBlock = [
 
 const blocks = [iBlock, jBlock, lBlock, oBlock, sBlock, tBlock, zBlock];
 
-const generateRandomBlock = () => {
-  return blocks[Math.floor(Math.random() * 7)];
-};
+// const generateRandomBlock = () => {
+//   return blocks[Math.floor(Math.random() * 7)];
+// };
 
 const generateRandomSequenceOfBlocks = () => {
   for (let i = blocks.length - 1; i > 0; i--) {
@@ -55,7 +55,6 @@ const generateRandomSequenceOfBlocks = () => {
     blocks[i] = blocks[index];
     blocks[index] = block;
   }
-
   return blocks;
 };
 
@@ -67,6 +66,6 @@ export default {
   sBlock,
   tBlock,
   zBlock,
-  generateRandomBlock,
+  // generateRandomBlock,
   generateRandomSequenceOfBlocks,
 };

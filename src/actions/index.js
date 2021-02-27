@@ -56,7 +56,7 @@ const setDropTimer = (dropTime) => {
 
 const clearRows = (field) => {
   return {
-    type: "ROWS-CLEARED",
+    type: "ROWS_CLEARED",
     payload: field,
   };
 };

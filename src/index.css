@@ -16,9 +16,9 @@ code {
     monospace;
 }
 
-.btn div {
+/* .btn div {
   display: inline;
-}
+} */
 
 .playfield {
   position: relative;
@@ -260,7 +260,7 @@ code {
   height: 5vmin;
   width: 5vmin;
   border-radius: 50%;
-  background-color: violet;
+  /* background-color: transparent; */
   border: 1vmin solid skyblue;
   border-top: 1vmin solid violet;
 }
@@ -301,7 +301,7 @@ code {
   height: 8vmin;
   width: 8vmin;
   border-radius: 50%;
-  background-color: violet;
+  /* background-color: transparent; */
   border: 2vmin solid skyblue;
   border-bottom: 2vmin solid violet;
 }
