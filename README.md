@@ -2,9 +2,9 @@
 
 Tetromino-based puzzle game created using [React.js](https://facebook.github.io/react/) and [Redux.js](http://redux.js.org/).
 
-## [Play Here](https://notris.netlify.app/)
+## [Play Here](https://notris.netlify.app)
 
-[![Demo](notris.mp4)](/notris.mp4)
+[![Demo](notris.mp4)](https://notris.netlify.app)
 
 ## Controls
 
