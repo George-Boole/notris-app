@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import blocks from "../blocks";
+import blocks from "../resources/blocks";
 import { rotateRight, rotateLeft } from "../functions/matrixFuncs";
 import {
   RESET,
