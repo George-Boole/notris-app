@@ -4,7 +4,7 @@ Tetromino-based puzzle game created using [React.js](https://facebook.github.io/
 
 ## [Play Here](https://notris.netlify.app)
 
-[![Demo](portfolio-site/blob/master/videos/notris.mp4)](https://github.com/GraemeRichmond/portfolio-site/blob/master/videos/notris.mp4)
+[![Demo](videos/notris.mp4)](https://www.graemerichmond.com/videos/notris.mp4)
 
 ## Controls
 
