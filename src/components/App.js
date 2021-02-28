@@ -165,6 +165,9 @@ class App extends Component {
           }
           break;
         case "Space":
+        case "Numpad9":
+        case "NumpadAdd":
+        case "ShiftRight":
           if (this.props.paused === false && this.props.gameOver === false) {
             e.preventDefault();
             while (!this.hitDetected()) {
@@ -239,7 +242,7 @@ class App extends Component {
             }
           }
           break;
-        case "KeyR":
+        case "KeyO":
           e.preventDefault();
           this.props.reset();
           clearDropInterval();
@@ -247,6 +250,7 @@ class App extends Component {
           setDropInterval(this.props.dropTimer);
           break;
         case "Enter":
+        case "NumpadEnter":
           if (this.props.gameOver) {
             e.preventDefault();
             this.props.reset();
@@ -359,7 +363,7 @@ class App extends Component {
     return (
       <div className="game-over">
         <h3>GAME OVER</h3>
-        <span>Press R or Enter to Play Again</span>
+        <span>Press O or Enter to Play Again</span>
       </div>
     );
   }

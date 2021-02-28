@@ -1,22 +1,20 @@
-## Scripts
+# Notris
 
-### `npm start`
+Tetromino-based puzzle game created using [React.js](https://facebook.github.io/react/) and [Redux.js](http://redux.js.org/).
 
-Runs app in the dev mode.<br />
-[http://localhost:3000](http://localhost:3000)
+## [Play Here](https://notris.netlify.app/)
 
-### `npm test`
+[![Demo](notris.mp4)](/notris.mp4)
 
-Launches test runner in interactive watch mode.
+## Controls
 
-### `npm run build`
-
-Builds app for production to `build` folder.
-
-### `npm run eject`
-
-**Irreversible!**
-
-Removes build dependency from project.
-
-Copies all config files and transitive dependencies to project. All commands except `eject` will still work, but will point to copied scripts.
+| Key                                   | Action       |
+| ------------------------------------- | ------------ |
+| A, Left, Numpad4                      | Left         |
+| D, Right, Numpad6                     | Right        |
+| S, Down, Numpad5, Numpad2             | Soft Drop    |
+| Space, Numpad9, NumpadAdd, ShiftRight | Hard Drop    |
+| Up, E, Numpad8                        | Rotate Right |
+| Z, W, /, Numpad8, NumpadDivide        | Rotate Left  |
+| O                                     | Reset        |
+| P, K                                  | Pause        |
