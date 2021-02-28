@@ -17,7 +17,7 @@ import {
   SET_GAME_OVER,
   ADD_TO_LINES,
   SET_LEVEL,
-} from "./constants";
+} from "../constants/constants";
 
 const reset = () => {
   return {

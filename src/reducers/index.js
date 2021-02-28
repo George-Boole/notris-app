@@ -1,6 +1,26 @@
 import { combineReducers } from "redux";
 import blocks from "../blocks";
 import { rotateRight, rotateLeft } from "../functions/matrixFuncs";
+import {
+  RESET,
+  MOVE_LEFT,
+  MOVE_RIGHT,
+  MOVE_DOWN,
+  MOVE_UP,
+  ROTATE_RIGHT,
+  ROTATE_LEFT,
+  BLOCK_PLACED,
+  DROP_TIMER_SET,
+  ROWS_CLEARED,
+  SET_ACTIVE_BLOCK,
+  NEW_SEQUENCE,
+  PAUSE,
+  UNPAUSE,
+  SET_SOFT_DROP,
+  SET_GAME_OVER,
+  ADD_TO_LINES,
+  SET_LEVEL,
+} from "../constants/constants";
 
 const blankRow = [...new Array(10)].map((tile) => (tile = 0));
 const emptyField = [...new Array(18)].map((row) => (row = blankRow));
@@ -28,10 +48,10 @@ const emptyField = [...new Array(18)].map((row) => (row = blankRow));
 
 const fieldReducer = (field = emptyField, action) => {
   switch (action.type) {
-    case "RESET":
+    case RESET:
       return emptyField;
-    case "ROWS_CLEARED":
-    case "BLOCK_PLACED":
+    case ROWS_CLEARED:
+    case BLOCK_PLACED:
       return action.payload;
     default:
       return field;
@@ -40,11 +60,11 @@ const fieldReducer = (field = emptyField, action) => {
 
 const activeBlockReducer = (block = blocks.iBlock, action) => {
   switch (action.type) {
-    case "ROTATE_RIGHT":
+    case ROTATE_RIGHT:
       return rotateRight(block);
-    case "ROTATE_LEFT":
+    case ROTATE_LEFT:
       return rotateLeft(block);
-    case "SET_ACTIVE_BLOCK":
+    case SET_ACTIVE_BLOCK:
       return action.payload;
     default:
       return block;
@@ -53,12 +73,12 @@ const activeBlockReducer = (block = blocks.iBlock, action) => {
 
 const xValueReducer = (xValue = 3, action) => {
   switch (action.type) {
-    case "BLOCK_PLACED":
-    case "RESET":
+    case BLOCK_PLACED:
+    case RESET:
       return 3;
-    case "MOVE_LEFT":
+    case MOVE_LEFT:
       return xValue - 1;
-    case "MOVE_RIGHT":
+    case MOVE_RIGHT:
       return xValue + 1;
     default:
       return xValue;
@@ -67,12 +87,12 @@ const xValueReducer = (xValue = 3, action) => {
 
 const yValueReducer = (yValue = 0, action) => {
   switch (action.type) {
-    case "BLOCK_PLACED":
-    case "RESET":
+    case BLOCK_PLACED:
+    case RESET:
       return 0;
-    case "MOVE_DOWN":
+    case MOVE_DOWN:
       return yValue + 1;
-    case "MOVE_UP":
+    case MOVE_UP:
       return yValue - 1;
     default:
       return yValue;
@@ -81,9 +101,9 @@ const yValueReducer = (yValue = 0, action) => {
 
 const dropTimerReducer = (dropTimer = 887, action) => {
   switch (action.type) {
-    case "DROP_TIMER_SET":
+    case DROP_TIMER_SET:
       return action.payload;
-    case "RESET":
+    case RESET:
       return 887;
     default:
       return dropTimer;
@@ -95,8 +115,8 @@ const currentSequenceOfBlocksReducer = (
   action
 ) => {
   switch (action.type) {
-    case "NEW_SEQUENCE":
-    case "RESET":
+    case NEW_SEQUENCE:
+    case RESET:
       return blocks.generateRandomSequenceOfBlocks();
     default:
       return currentSequenceOfBlocks;
@@ -105,10 +125,10 @@ const currentSequenceOfBlocksReducer = (
 
 const indexOfNextBlockReducer = (indexOfNextBlock = 0, action) => {
   switch (action.type) {
-    case "NEW_SEQUENCE":
-    case "RESET":
+    case NEW_SEQUENCE:
+    case RESET:
       return 0;
-    case "BLOCK_PLACED":
+    case BLOCK_PLACED:
       return indexOfNextBlock + 1;
     default:
       return indexOfNextBlock;
@@ -117,10 +137,10 @@ const indexOfNextBlockReducer = (indexOfNextBlock = 0, action) => {
 
 const pausedReducer = (paused = false, action) => {
   switch (action.type) {
-    case "PAUSE":
+    case PAUSE:
       return true;
-    case "UNPAUSE":
-    case "RESET":
+    case UNPAUSE:
+    case RESET:
       return false;
     default:
       return paused;
@@ -129,9 +149,9 @@ const pausedReducer = (paused = false, action) => {
 
 const softDroppingReducer = (softDropping = false, action) => {
   switch (action.type) {
-    case "SET_SOFT_DROP":
+    case SET_SOFT_DROP:
       return action.payload;
-    case "RESET":
+    case RESET:
       return false;
     default:
       return softDropping;
@@ -140,9 +160,9 @@ const softDroppingReducer = (softDropping = false, action) => {
 
 const gameOverReducer = (gameOver = false, action) => {
   switch (action.type) {
-    case "SET_GAME_OVER":
+    case SET_GAME_OVER:
       return action.payload;
-    case "RESET":
+    case RESET:
       return false;
     default:
       return gameOver;
@@ -151,9 +171,9 @@ const gameOverReducer = (gameOver = false, action) => {
 
 const linesReducer = (lines = 0, action) => {
   switch (action.type) {
-    case "ADD_TO_LINES":
+    case ADD_TO_LINES:
       return lines + action.payload;
-    case "RESET":
+    case RESET:
       return 0;
     default:
       return lines;
@@ -162,9 +182,9 @@ const linesReducer = (lines = 0, action) => {
 
 const levelReducer = (level = 0, action) => {
   switch (action.type) {
-    case "SET_LEVEL":
+    case SET_LEVEL:
       return action.payload;
-    case "RESET":
+    case RESET:
       return 0;
     default:
       return level;
