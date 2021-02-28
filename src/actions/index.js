@@ -1,115 +1,136 @@
+import {
+  RESET,
+  MOVE_LEFT,
+  MOVE_RIGHT,
+  MOVE_DOWN,
+  MOVE_UP,
+  ROTATE_RIGHT,
+  ROTATE_LEFT,
+  BLOCK_PLACED,
+  DROP_TIMER_SET,
+  ROWS_CLEARED,
+  SET_ACTIVE_BLOCK,
+  NEW_SEQUENCE,
+  PAUSE,
+  UNPAUSE,
+  SET_SOFT_DROP,
+  SET_GAME_OVER,
+  ADD_TO_LINES,
+  SET_LEVEL,
+} from "./constants";
+
 const reset = () => {
   return {
-    type: "RESET",
+    type: RESET,
   };
 };
 
 const moveLeft = () => {
   return {
-    type: "MOVE_LEFT",
+    type: MOVE_LEFT,
   };
 };
 
 const moveRight = () => {
   return {
-    type: "MOVE_RIGHT",
+    type: MOVE_RIGHT,
   };
 };
 
 const moveDown = () => {
   return {
-    type: "MOVE_DOWN",
+    type: MOVE_DOWN,
   };
 };
 
 const moveUp = () => {
   return {
-    type: "MOVE_UP",
+    type: MOVE_UP,
   };
 };
 
 const rotateRight = () => {
   return {
-    type: "ROTATE_RIGHT",
+    type: ROTATE_RIGHT,
   };
 };
 
 const rotateLeft = () => {
   return {
-    type: "ROTATE_LEFT",
+    type: ROTATE_LEFT,
   };
 };
 
 const placeBlock = (field) => {
   return {
-    type: "BLOCK_PLACED",
+    type: BLOCK_PLACED,
     payload: field,
   };
 };
 
 const setDropTimer = (dropTime) => {
   return {
-    type: "DROP_TIMER_SET",
+    type: DROP_TIMER_SET,
     payload: dropTime,
   };
 };
 
 const clearRows = (field) => {
   return {
-    type: "ROWS_CLEARED",
+    type: ROWS_CLEARED,
     payload: field,
   };
 };
 
 const setActiveBlock = (block) => {
   return {
-    type: "SET_ACTIVE_BLOCK",
+    type: SET_ACTIVE_BLOCK,
     payload: block,
   };
 };
 
 const getNewSequenceOfBlocks = () => {
   return {
-    type: "NEW_SEQUENCE",
+    type: NEW_SEQUENCE,
   };
 };
 
 const pause = () => {
   return {
-    type: "PAUSE",
+    type: PAUSE,
   };
 };
 
 const unpause = () => {
   return {
-    type: "UNPAUSE",
+    type: UNPAUSE,
   };
 };
 
 const setSoftDroppingTo = (softDropping) => {
   return {
-    type: "SET_SOFT_DROP",
+    type: SET_SOFT_DROP,
     payload: softDropping,
   };
 };
 
 const setGameOverTo = (gameOver) => {
   return {
-    type: "SET_GAME_OVER",
+    type: SET_GAME_OVER,
     payload: gameOver,
   };
 };
 
 const addToLines = (number) => {
   return {
-    type: "ADD_TO_LINES",
+    type: ADD_TO_LINES,
     payload: number,
   };
 };
 
 const setLevel = (level) => {
   return {
-    type: "SET_LEVEL",
+    type: SET_LEVEL,
     payload: level,
   };
 };

@@ -6,12 +6,6 @@ Tetromino-based puzzle game created using [React.js](https://facebook.github.io/
 
 [![Demo](notris.gif)](https://notris.netlify.app)
 
-<!-- <video width="320" height="240" controls>
-  <source src="notris.mp4" type="video/mp4">
-</video> -->
-
-<!-- ![](notris.mp4) -->
-
 ## Controls
 
 | Key                                   | Action       |
