@@ -592,6 +592,7 @@ class App extends Component {
           {this.props.gameOver && this.renderGameOver()}
           {this.renderField()}
         </div>
+        <h6 className="controls">P: Pause | O: Reset</h6>
       </>
     );
   }
