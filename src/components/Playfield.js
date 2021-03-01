@@ -3,16 +3,13 @@ import { connect } from "react-redux";
 
 // import actions from "../actions";
 import { mergeMatrices } from "../functions/matrixFuncs";
+import GameOver from "./GameOver";
+import PauseScreen from "./PauseScreen";
 import SidePanel from "./SidePanel";
 
 export class Playfield extends Component {
   renderGameOver() {
-    return (
-      <div className="game-over">
-        <h3>GAME OVER</h3>
-        <span>Press O or Enter to Play Again</span>
-      </div>
-    );
+    return <GameOver />;
   }
 
   renderField() {
@@ -81,12 +78,7 @@ export class Playfield extends Component {
         );
       });
     }
-    return (
-      <div className="pause-screen">
-        <h3>PAUSED</h3>
-        <span>Press P or Enter to Resume</span>
-      </div>
-    );
+    return <PauseScreen />;
   }
 
   render() {
