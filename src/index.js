@@ -6,7 +6,7 @@ import { createStore } from "redux";
 import "./css/index.css";
 import "./css/blocks.css";
 import "./css/controls.css";
-import App from "./components/App";
+import App from "./App";
 import reducers from "./reducers";
 
 ReactDOM.render(
