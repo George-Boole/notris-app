@@ -180,6 +180,7 @@ class App extends Component {
           }
           break;
         case "ArrowUp":
+        case "KeyX":
         case "KeyE":
         case "Numpad8":
           if (this.props.paused === false && this.props.gameOver === false) {
