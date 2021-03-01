@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import Lines from "./Lines";
 
-import NextBlock from "./NextBlock";
+// import NextBlock from "./NextBlock";
 
 export class SidePanel extends Component {
   render() {
@@ -17,10 +18,7 @@ export class SidePanel extends Component {
             {this.props.level + 1 < 21 ? this.props.level + 1 : "MAX"}
           </h3>
         </div>
-        <div className="lines">
-          <h2 className="heading">LINES:</h2>
-          <h3 className="num">{this.props.lines}</h3>
-        </div>
+        <Lines />
         {/* <NextBlock /> */}
       </div>
     );
