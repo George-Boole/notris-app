@@ -78,20 +78,24 @@ export class SidePanel extends Component {
   render() {
     return (
       <div className="side-panel">
-        <h2 className="lvl">
-          LEVEL:
-          <h3 className="lvl num">
+        <div className="score">
+          <h2 className="heading">SCORE:</h2>
+          <h3 className="num">000000</h3>
+        </div>
+        <div className="lvl">
+          <h2 className="heading">LEVEL:</h2>
+          <h3 className="num">
             {this.props.level + 1 < 21 ? this.props.level + 1 : "MAX"}
           </h3>
-        </h2>
-        <h2 className="lines">
-          LINES:
-          <h3 className="lines num">{this.props.lines}</h3>
-        </h2>
-        <h2 className="next-block">
-          NEXT:
-          <div className="next-block preview">{this.renderNextBlock()}</div>
-        </h2>
+        </div>
+        <div className="lines">
+          <h2 className="heading">LINES:</h2>
+          <h3 className="num">{this.props.lines}</h3>
+        </div>
+        <div className="next-block">
+          <h2 className="heading">NEXT:</h2>
+          <div className="preview">{this.renderNextBlock()}</div>
+        </div>
       </div>
     );
   }

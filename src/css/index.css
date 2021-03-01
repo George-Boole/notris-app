@@ -91,44 +91,36 @@ body {
   font-size: 5vmin;
 }
 
-.lines,
-.lvl,
-.next-block {
+.side-panel {
   position: absolute;
-  text-align: center;
-  height: 10vmin;
-  width: 23vmin;
+  top: -1vmin;
+  left: 50.17vmin;
+  display: block;
   background-color: skyblue;
   color: violet;
-  font-size: 5vmin;
-  top: -5.2vmin;
-  left: 50.17vmin;
+  text-align: center;
   border: 1vmin solid violet;
-  padding: 0;
 }
 
-.lines {
-  top: 14vmin;
+.side-panel > div:not(:last-child) {
+  border-bottom: 1vmin solid violet;
 }
 
-.num {
-  top: 0;
-  left: -1vmin;
+.side-panel > div > .heading {
+  margin: 0;
+  font-size: 5vmin;
+  /* border-bottom: 0.5vmin solid violet; */
+}
+
+.side-panel > div > .num {
+  margin: 0;
   font-size: 8vmin;
-  line-height: 10vmin;
 }
 
-.next-block {
-  display: none;
-  top: 33vmin;
+.side-panel .score .num {
+  font-size: 6vmin;
 }
 
 .preview {
-  padding: 5vmin, 0, 5vmin, 0;
-  line-height: 0;
-  top: 7vmin;
-  left: -1vmin;
-  height: 20vmin;
   width: 23vmin;
-  background-color: skyblue;
 }
