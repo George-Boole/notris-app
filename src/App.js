@@ -170,6 +170,7 @@ class App extends Component {
         case "Space":
         case "Numpad9":
         case "NumpadAdd":
+        case "Numpad0":
         case "ShiftRight":
           if (this.props.paused === false && this.props.gameOver === false) {
             e.preventDefault();
@@ -334,6 +335,10 @@ class App extends Component {
               : 20
           );
           this.props.setDropTimer(dropRateTable[this.props.level]);
+
+          clearDropInterval();
+          setDropInterval(this.props.dropTimer);
+
           if (this.props.indexOfNextBlock > 6)
             this.props.getNewSequenceOfBlocks();
           this.props.setActiveBlock(
