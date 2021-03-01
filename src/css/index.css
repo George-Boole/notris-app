@@ -95,6 +95,7 @@ body {
   position: absolute;
   top: -1vmin;
   left: 50.17vmin;
+  width: 23vmin;
   display: block;
   background-color: skyblue;
   color: violet;
@@ -119,8 +120,4 @@ body {
 
 .side-panel .score .num {
   font-size: 6vmin;
-}
-
-.preview {
-  width: 23vmin;
 }
