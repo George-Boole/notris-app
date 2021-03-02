@@ -4,28 +4,45 @@ import { connect } from "react-redux";
 import actions from "../actions";
 import { detectHit } from "../functions/matrixFuncs";
 
-export class TouchLeft extends Component {
+class TouchLeft extends Component {
   componentDidMount() {
-    const left = document.getElementById("move-left");
-    left.addEventListener("mousedown", (e) => {
-      if (!this.props.paused) {
-        e.preventDefault();
-        this.props.moveLeft(1);
-        if (
-          detectHit(
-            this.props.field,
-            this.props.activeBlock,
-            this.props.xValue,
-            this.props.yValue
-          )
+    // const left = document.getElementById("move-left");
+    // left.addEventListener("mousedown", (e) => {
+    //   if (!this.props.paused) {
+    //     e.preventDefault();
+    //     this.props.moveLeft(1);
+    //     if (
+    //       detectHit(
+    //         this.props.field,
+    //         this.props.activeBlock,
+    //         this.props.xValue,
+    //         this.props.yValue
+    //       )
+    //     )
+    //       this.props.moveRight(1);
+    //   }
+    // });
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(e) {
+    if (!this.props.paused) {
+      e.preventDefault();
+      this.props.moveLeft(1);
+      if (
+        detectHit(
+          this.props.field,
+          this.props.activeBlock,
+          this.props.xValue,
+          this.props.yValue
         )
-          this.props.moveRight(1);
-      }
-    });
+      )
+        this.props.moveRight(1);
+    }
   }
 
   render() {
-    return <div id="move-left"></div>;
+    return <div id="move-left" onClick={this.handleClick}></div>;
   }
 }
 
