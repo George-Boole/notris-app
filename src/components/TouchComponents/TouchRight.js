@@ -6,8 +6,8 @@ import { detectHit } from "../../functions/matrixFuncs";
 
 class TouchRight extends Component {
   componentDidMount() {
-    const left = document.getElementById("move-right");
-    left.addEventListener("mousedown", (e) => {
+    const right = document.getElementById("move-right");
+    right.addEventListener("mousedown", (e) => {
       if (!this.props.paused) {
         e.preventDefault();
         this.props.moveRight(1);
