@@ -77,9 +77,9 @@ const xValueReducer = (xValue = 3, action) => {
     case RESET:
       return 3;
     case MOVE_LEFT:
-      return xValue - 1;
+      return xValue - action.payload;
     case MOVE_RIGHT:
-      return xValue + 1;
+      return xValue + action.payload;
     default:
       return xValue;
   }

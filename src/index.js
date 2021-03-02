@@ -5,7 +5,7 @@ import { createStore } from "redux";
 
 import "./css/index.css";
 import "./css/blocks.css";
-import "./css/controls.css";
+import "./css/touch-controls.css";
 import App from "./App";
 import reducers from "./reducers";
 

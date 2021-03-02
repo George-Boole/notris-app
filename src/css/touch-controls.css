@@ -1,8 +1,8 @@
-.btns {
+.touch-controls {
   position: absolute;
 }
 
-.btns > div {
+.touch-controls > div {
   background-color: violet;
   filter: drop-shadow(0 0 5px black);
 }

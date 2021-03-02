@@ -1,9 +1,9 @@
-import { fireEvent } from "@testing-library/react";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import KeyBindings from "./components/KeyBindings";
 import Playfield from "./components/Playfield";
+import KeyBindings from "./components/KeyBindings";
+import TouchControls from "./components/TouchControls";
 
 import actions from "./actions";
 import {
@@ -21,8 +21,8 @@ class App extends Component {
     left.addEventListener("mousedown", (e) => {
       if (!this.props.paused) {
         e.preventDefault();
-        this.props.moveLeft();
-        if (this.hitDetected()) this.props.moveRight();
+        this.props.moveLeft(1);
+        if (this.hitDetected()) this.props.moveRight(1);
       }
     });
 
@@ -30,8 +30,8 @@ class App extends Component {
     right.addEventListener("mousedown", (e) => {
       if (!this.props.paused) {
         e.preventDefault();
-        this.props.moveRight();
-        if (this.hitDetected()) this.props.moveLeft();
+        this.props.moveRight(1);
+        if (this.hitDetected()) this.props.moveLeft(1);
       }
     });
 
@@ -65,28 +65,21 @@ class App extends Component {
       if (!this.props.paused) {
         e.preventDefault();
         this.props.rotateLeft(this.props.activeBlock);
-        if (this.hitDetected()) this.props.moveRight();
+        if (this.hitDetected()) this.props.moveRight(1);
         if (this.hitDetected()) {
-          this.props.moveLeft();
-          this.props.moveLeft();
+          this.props.moveLeft(2);
         }
         if (this.hitDetected() && this.props.activeBlock.length === 4) {
-          this.props.moveRight();
-          this.props.moveRight();
-          this.props.moveRight();
+          this.props.moveRight(3);
           if (this.hitDetected()) {
-            this.props.moveLeft();
-            this.props.moveLeft();
-            this.props.moveLeft();
-            this.props.moveLeft();
+            this.props.moveLeft(4);
           }
           if (this.hitDetected()) {
-            this.props.moveRight();
-            this.props.moveRight();
+            this.props.moveRight(2);
             this.props.rotateRight(this.props.activeBlock);
           }
         } else if (this.hitDetected()) {
-          this.props.moveRight();
+          this.props.moveRight(1);
           this.props.rotateRight(this.props.activeBlock);
         }
       }
@@ -97,28 +90,21 @@ class App extends Component {
       if (this.props.paused === false && this.props.gameOver === false) {
         e.preventDefault();
         this.props.rotateRight(this.props.activeBlock);
-        if (this.hitDetected()) this.props.moveRight();
+        if (this.hitDetected()) this.props.moveRight(1);
         if (this.hitDetected()) {
-          this.props.moveLeft();
-          this.props.moveLeft();
+          this.props.moveLeft(2);
         }
         if (this.hitDetected() && this.props.activeBlock.length === 4) {
-          this.props.moveRight();
-          this.props.moveRight();
-          this.props.moveRight();
+          this.props.moveRight(3);
           if (this.hitDetected()) {
-            this.props.moveLeft();
-            this.props.moveLeft();
-            this.props.moveLeft();
-            this.props.moveLeft();
+            this.props.moveLeft(4);
           }
           if (this.hitDetected()) {
-            this.props.moveRight();
-            this.props.moveRight();
+            this.props.moveRight(2);
             this.props.rotateLeft(this.props.activeBlock);
           }
         } else if (this.hitDetected()) {
-          this.props.moveRight();
+          this.props.moveRight(1);
           this.props.rotateLeft(this.props.activeBlock);
         }
       }
@@ -131,8 +117,8 @@ class App extends Component {
         case "Numpad4":
           if (!this.props.paused) {
             e.preventDefault();
-            this.props.moveLeft();
-            if (this.hitDetected()) this.props.moveRight();
+            this.props.moveLeft(1);
+            if (this.hitDetected()) this.props.moveRight(1);
           }
           break;
         case "KeyD":
@@ -140,8 +126,8 @@ class App extends Component {
         case "Numpad6":
           if (!this.props.paused) {
             e.preventDefault();
-            this.props.moveRight();
-            if (this.hitDetected()) this.props.moveLeft();
+            this.props.moveRight(1);
+            if (this.hitDetected()) this.props.moveLeft(1);
           }
           break;
         case "KeyS":
@@ -191,28 +177,21 @@ class App extends Component {
           if (this.props.paused === false && this.props.gameOver === false) {
             e.preventDefault();
             this.props.rotateRight(this.props.activeBlock);
-            if (this.hitDetected()) this.props.moveRight();
+            if (this.hitDetected()) this.props.moveRight(1);
             if (this.hitDetected()) {
-              this.props.moveLeft();
-              this.props.moveLeft();
+              this.props.moveLeft(2);
             }
             if (this.hitDetected() && this.props.activeBlock.length === 4) {
-              this.props.moveRight();
-              this.props.moveRight();
-              this.props.moveRight();
+              this.props.moveRight(3);
               if (this.hitDetected()) {
-                this.props.moveLeft();
-                this.props.moveLeft();
-                this.props.moveLeft();
-                this.props.moveLeft();
+                this.props.moveLeft(4);
               }
               if (this.hitDetected()) {
-                this.props.moveRight();
-                this.props.moveRight();
+                this.props.moveRight(2);
                 this.props.rotateLeft(this.props.activeBlock);
               }
             } else if (this.hitDetected()) {
-              this.props.moveRight();
+              this.props.moveRight(1);
               this.props.rotateLeft(this.props.activeBlock);
             }
           }
@@ -225,28 +204,21 @@ class App extends Component {
           if (!this.props.paused) {
             e.preventDefault();
             this.props.rotateLeft(this.props.activeBlock);
-            if (this.hitDetected()) this.props.moveRight();
+            if (this.hitDetected()) this.props.moveRight(1);
             if (this.hitDetected()) {
-              this.props.moveLeft();
-              this.props.moveLeft();
+              this.props.moveLeft(2);
             }
             if (this.hitDetected() && this.props.activeBlock.length === 4) {
-              this.props.moveRight();
-              this.props.moveRight();
-              this.props.moveRight();
+              this.props.moveRight(3);
               if (this.hitDetected()) {
-                this.props.moveLeft();
-                this.props.moveLeft();
-                this.props.moveLeft();
-                this.props.moveLeft();
+                this.props.moveLeft(4);
               }
               if (this.hitDetected()) {
-                this.props.moveRight();
-                this.props.moveRight();
+                this.props.moveRight(2);
                 this.props.rotateRight(this.props.activeBlock);
               }
             } else if (this.hitDetected()) {
-              this.props.moveRight();
+              this.props.moveRight(1);
               this.props.rotateRight(this.props.activeBlock);
             }
           }
@@ -373,64 +345,9 @@ class App extends Component {
   render() {
     return (
       <>
-        <div className="btns">
-          <div id="move-left"></div>
-          <div id="move-right"></div>
-
-          <div
-            id="soft-drop"
-            onTouchStart={() => {
-              fireEvent.keyDown(window, {
-                key: "ArrowDown",
-                code: "ArrowDown",
-              });
-            }}
-            onMouseDown={() => {
-              fireEvent.keyDown(window, {
-                key: "ArrowDown",
-                code: "ArrowDown",
-              });
-            }}
-            onTouchEnd={() => {
-              fireEvent.keyUp(window, {
-                key: "ArrowDown",
-                code: "ArrowDown",
-              });
-            }}
-            onMouseUp={() => {
-              fireEvent.keyUp(window, {
-                key: "ArrowDown",
-                code: "ArrowDown",
-              });
-            }}
-          ></div>
-          <div id="hard-drop"></div>
-
-          <div
-            id="pause"
-            onMouseDown={() => {
-              fireEvent.keyDown(window, {
-                key: "p",
-                code: "KeyP",
-              });
-            }}
-          ></div>
-          <div
-            id="reset"
-            onMouseDown={() => {
-              fireEvent.keyDown(window, {
-                key: "r",
-                code: "KeyR",
-              });
-            }}
-          ></div>
-
-          <div id="rotate-left"></div>
-          <div id="rotate-right"></div>
-        </div>
-
         <Playfield />
         <KeyBindings />
+        <TouchControls />
       </>
     );
   }

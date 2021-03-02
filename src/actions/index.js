@@ -25,15 +25,17 @@ const reset = () => {
   };
 };
 
-const moveLeft = () => {
+const moveLeft = (number) => {
   return {
     type: MOVE_LEFT,
+    payload: number,
   };
 };
 
-const moveRight = () => {
+const moveRight = (number) => {
   return {
     type: MOVE_RIGHT,
+    payload: number,
   };
 };
 
