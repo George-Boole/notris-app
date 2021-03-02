@@ -5,6 +5,8 @@ import Playfield from "./components/Playfield";
 import KeyBindings from "./components/KeyBindings";
 import TouchControls from "./components/TouchControls";
 
+import { dropRateTable } from "./resources/dropRateTable";
+
 import actions from "./actions";
 import {
   mergeMatrices,
@@ -263,30 +265,6 @@ class App extends Component {
           return null;
       }
     });
-
-    const dropRateTable = [
-      887,
-      820,
-      753,
-      686,
-      619,
-      552,
-      469,
-      368,
-      285,
-      184,
-      167,
-      151,
-      134,
-      117,
-      100,
-      92,
-      83,
-      75,
-      67,
-      58,
-      50,
-    ];
 
     let intervalId;
 
