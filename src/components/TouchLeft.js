@@ -22,26 +22,26 @@ class TouchLeft extends Component {
     //       this.props.moveRight(1);
     //   }
     // });
-    this.handleOnMouseDown = this.handleOnMouseDown.bind(this);
+    // this.handleOnMouseDown = this.handleOnMouseDown.bind(this);
     this.handleOnTouchStart = this.handleOnTouchStart.bind(this);
-    // this.handleClick = this.handleClick.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
-  handlehandleOnMouseDown(e) {
-    if (!this.props.paused) {
-      e.preventDefault();
-      this.props.moveLeft(1);
-      if (
-        detectHit(
-          this.props.field,
-          this.props.activeBlock,
-          this.props.xValue,
-          this.props.yValue
-        )
-      )
-        this.props.moveRight(1);
-    }
-  }
+  // handlehandleOnMouseDown(e) {
+  //   if (!this.props.paused) {
+  //     e.preventDefault();
+  //     this.props.moveLeft(1);
+  //     if (
+  //       detectHit(
+  //         this.props.field,
+  //         this.props.activeBlock,
+  //         this.props.xValue,
+  //         this.props.yValue
+  //       )
+  //     )
+  //       this.props.moveRight(1);
+  //   }
+  // }
 
   handleOnTouchStart(e) {
     if (!this.props.paused) {
@@ -59,29 +59,29 @@ class TouchLeft extends Component {
     }
   }
 
-  // handleClick(e) {
-  //   if (!this.props.paused) {
-  //     e.preventDefault();
-  //     this.props.moveLeft(1);
-  //     if (
-  //       detectHit(
-  //         this.props.field,
-  //         this.props.activeBlock,
-  //         this.props.xValue,
-  //         this.props.yValue
-  //       )
-  //     )
-  //       this.props.moveRight(1);
-  //   }
-  // }
+  handleClick(e) {
+    if (!this.props.paused) {
+      e.preventDefault();
+      this.props.moveLeft(1);
+      if (
+        detectHit(
+          this.props.field,
+          this.props.activeBlock,
+          this.props.xValue,
+          this.props.yValue
+        )
+      )
+        this.props.moveRight(1);
+    }
+  }
 
   render() {
     return (
       <div
         id="move-left"
-        onMouseDown={this.handleOnMouseDown}
+        // onMouseDown={this.handleOnMouseDown}
         onTouchStart={this.handleOnTouchStart}
-        // onClick={this.handleClick}
+        onClick={this.handleClick}
       ></div>
     );
   }
