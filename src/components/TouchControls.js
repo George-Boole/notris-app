@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { fireEvent } from "@testing-library/react";
 import TouchLeft from "./TouchComponents/TouchLeft";
 import TouchRight from "./TouchComponents/TouchRight";
+import TouchRotateRight from "./TouchComponents/TouchRotateRight";
 
 export class TouchControls extends Component {
   render() {
@@ -59,7 +60,8 @@ export class TouchControls extends Component {
         ></div>
 
         <div id="rotate-left"></div>
-        <div id="rotate-right"></div>
+        {/* <div id="rotate-right"></div> */}
+        <TouchRotateRight />
       </div>
     );
   }

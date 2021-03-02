@@ -69,30 +69,30 @@ class App extends Component {
       }
     });
 
-    const rotateRight = document.getElementById("rotate-right");
-    rotateRight.addEventListener("mousedown", (e) => {
-      if (this.props.paused === false && this.props.gameOver === false) {
-        e.preventDefault();
-        this.props.rotateRight(this.props.activeBlock);
-        if (this.hitDetected()) this.props.moveRight(1);
-        if (this.hitDetected()) {
-          this.props.moveLeft(2);
-        }
-        if (this.hitDetected() && this.props.activeBlock.length === 4) {
-          this.props.moveRight(3);
-          if (this.hitDetected()) {
-            this.props.moveLeft(4);
-          }
-          if (this.hitDetected()) {
-            this.props.moveRight(2);
-            this.props.rotateLeft(this.props.activeBlock);
-          }
-        } else if (this.hitDetected()) {
-          this.props.moveRight(1);
-          this.props.rotateLeft(this.props.activeBlock);
-        }
-      }
-    });
+    // const rotateRight = document.getElementById("rotate-right");
+    // rotateRight.addEventListener("mousedown", (e) => {
+    //   if (this.props.paused === false && this.props.gameOver === false) {
+    //     e.preventDefault();
+    //     this.props.rotateRight(this.props.activeBlock);
+    //     if (this.hitDetected()) this.props.moveRight(1);
+    //     if (this.hitDetected()) {
+    //       this.props.moveLeft(2);
+    //     }
+    //     if (this.hitDetected() && this.props.activeBlock.length === 4) {
+    //       this.props.moveRight(3);
+    //       if (this.hitDetected()) {
+    //         this.props.moveLeft(4);
+    //       }
+    //       if (this.hitDetected()) {
+    //         this.props.moveRight(2);
+    //         this.props.rotateLeft(this.props.activeBlock);
+    //       }
+    //     } else if (this.hitDetected()) {
+    //       this.props.moveRight(1);
+    //       this.props.rotateLeft(this.props.activeBlock);
+    //     }
+    //   }
+    // });
 
     window.addEventListener("keydown", (e) => {
       switch (e.code) {
