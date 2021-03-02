@@ -55,6 +55,8 @@ class App extends Component {
           this.props.moveDown();
         }
         this.props.moveUp();
+        clearDropInterval();
+        setDropInterval(this.props.dropTimer);
       }
     });
 
@@ -178,6 +180,8 @@ class App extends Component {
               this.props.moveDown();
             }
             this.props.moveUp();
+            clearDropInterval();
+            setDropInterval(this.props.dropTimer);
           }
           break;
         case "ArrowUp":
@@ -335,10 +339,8 @@ class App extends Component {
               : 20
           );
           this.props.setDropTimer(dropRateTable[this.props.level]);
-
           clearDropInterval();
           setDropInterval(this.props.dropTimer);
-
           if (this.props.indexOfNextBlock > 6)
             this.props.getNewSequenceOfBlocks();
           this.props.setActiveBlock(
