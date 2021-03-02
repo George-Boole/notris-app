@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import { fireEvent } from "@testing-library/react";
+import TouchLeft from "./TouchLeft";
 
 export class TouchControls extends Component {
   render() {
     return (
       <div className="touch-controls">
-        <div id="move-left"></div>
+        <TouchLeft />
+        {/* <div id="move-left"></div> */}
         <div id="move-right"></div>
 
         <div

@@ -19,14 +19,14 @@ class App extends Component {
   componentDidMount() {
     this.props.setActiveBlock(this.props.currentSequenceOfBlocks[0]);
 
-    const left = document.getElementById("move-left");
-    left.addEventListener("mousedown", (e) => {
-      if (!this.props.paused) {
-        e.preventDefault();
-        this.props.moveLeft(1);
-        if (this.hitDetected()) this.props.moveRight(1);
-      }
-    });
+    // const left = document.getElementById("move-left");
+    // left.addEventListener("mousedown", (e) => {
+    //   if (!this.props.paused) {
+    //     e.preventDefault();
+    //     this.props.moveLeft(1);
+    //     if (this.hitDetected()) this.props.moveRight(1);
+    //   }
+    // });
 
     const right = document.getElementById("move-right");
     right.addEventListener("mousedown", (e) => {
