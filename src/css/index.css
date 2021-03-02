@@ -121,3 +121,8 @@ body {
 .side-panel .score .num {
   font-size: 6vmin;
 }
+
+.score,
+.next-block {
+  display: none;
+}
