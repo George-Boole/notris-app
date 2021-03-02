@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-export class PauseScreen extends Component {
+class PauseScreen extends Component {
   render() {
     return (
       <div className="pause-screen">

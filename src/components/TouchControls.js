@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { fireEvent } from "@testing-library/react";
 import TouchLeft from "./TouchComponents/TouchLeft";
 import TouchRight from "./TouchComponents/TouchRight";
+import TouchSoftDrop from "./TouchComponents/TouchSoftDrop";
+// import TouchHardDrop from "./TouchComponents/TouchHardDrop";
 import TouchRotateLeft from "./TouchComponents/TouchRotateLeft";
 import TouchRotateRight from "./TouchComponents/TouchRotateRight";
 
@@ -12,7 +14,8 @@ export class TouchControls extends Component {
         <TouchLeft />
         <TouchRight />
 
-        <div
+        <TouchSoftDrop />
+        {/* <div
           id="soft-drop"
           onTouchStart={() => {
             fireEvent.keyDown(window, {
@@ -38,8 +41,9 @@ export class TouchControls extends Component {
               code: "ArrowDown",
             });
           }}
-        ></div>
+        ></div> */}
         <div id="hard-drop"></div>
+        {/* <TouchHardDrop /> */}
 
         <div
           id="pause"

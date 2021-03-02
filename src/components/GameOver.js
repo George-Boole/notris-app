@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-export class GameOver extends Component {
+class GameOver extends Component {
   render() {
     return (
       <div className="game-over">
