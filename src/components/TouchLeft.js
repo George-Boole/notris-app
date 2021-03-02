@@ -6,42 +6,42 @@ import { detectHit } from "../functions/matrixFuncs";
 
 class TouchLeft extends Component {
   componentDidMount() {
-    // const left = document.getElementById("move-left");
-    // left.addEventListener("mousedown", (e) => {
-    //   if (!this.props.paused) {
-    //     e.preventDefault();
-    //     this.props.moveLeft(1);
-    //     if (
-    //       detectHit(
-    //         this.props.field,
-    //         this.props.activeBlock,
-    //         this.props.xValue,
-    //         this.props.yValue
-    //       )
-    //     )
-    //       this.props.moveRight(1);
-    //   }
-    // });
-    // this.handleOnMouseDown = this.handleOnMouseDown.bind(this);
+    const left = document.getElementById("move-left");
+    left.addEventListener("mousedown", (e) => {
+      if (!this.props.paused) {
+        e.preventDefault();
+        this.props.moveLeft(1);
+        if (
+          detectHit(
+            this.props.field,
+            this.props.activeBlock,
+            this.props.xValue,
+            this.props.yValue
+          )
+        )
+          this.props.moveRight(1);
+      }
+    });
+    this.handleOnMouseDown = this.handleOnMouseDown.bind(this);
     this.handleOnTouchStart = this.handleOnTouchStart.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
 
-  // handlehandleOnMouseDown(e) {
-  //   if (!this.props.paused) {
-  //     e.preventDefault();
-  //     this.props.moveLeft(1);
-  //     if (
-  //       detectHit(
-  //         this.props.field,
-  //         this.props.activeBlock,
-  //         this.props.xValue,
-  //         this.props.yValue
-  //       )
-  //     )
-  //       this.props.moveRight(1);
-  //   }
-  // }
+  handleOnMouseDown(e) {
+    if (!this.props.paused) {
+      e.preventDefault();
+      this.props.moveLeft(1);
+      if (
+        detectHit(
+          this.props.field,
+          this.props.activeBlock,
+          this.props.xValue,
+          this.props.yValue
+        )
+      )
+        this.props.moveRight(1);
+    }
+  }
 
   handleOnTouchStart(e) {
     if (!this.props.paused) {
@@ -80,8 +80,8 @@ class TouchLeft extends Component {
       <div
         id="move-left"
         // onMouseDown={this.handleOnMouseDown}
-        onTouchStart={this.handleOnTouchStart}
-        onClick={this.handleClick}
+        // onTouchStart={this.handleOnTouchStart}
+        // onClick={this.handleClick}
       ></div>
     );
   }
