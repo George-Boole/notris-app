@@ -12,7 +12,7 @@ export class SidePanel extends Component {
         {/* <Score /> */}
         <Level />
         <Lines />
-        {/* <NextBlock /> */}
+        <NextBlock />
       </div>
     );
   }

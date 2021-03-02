@@ -1,17 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-// import actions from "../actions";
-import GameOver from "./GameOver";
-import PauseScreen from "./PauseScreen";
-import SidePanel from "./SidePanel";
 import RenderMatrix from "./RenderMatrix";
+import PauseScreen from "./PauseScreen";
+import GameOver from "./GameOver";
+import SidePanel from "./SidePanel";
 
 export class Playfield extends Component {
-  renderGameOver() {
-    return <GameOver />;
-  }
-
   renderField() {
     if (!this.props.paused) {
       return (
@@ -26,12 +21,16 @@ export class Playfield extends Component {
     return <PauseScreen />;
   }
 
+  renderGameOver() {
+    return <GameOver />;
+  }
+
   render() {
     return (
       <div className="playfield">
-        <SidePanel />
-        {this.props.gameOver && this.renderGameOver()}
         {this.renderField()}
+        {this.props.gameOver && this.renderGameOver()}
+        <SidePanel />
       </div>
     );
   }
