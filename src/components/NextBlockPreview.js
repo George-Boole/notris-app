@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 import RenderMatrix from "./RenderMatrix";
 
-export class NextBlock extends Component {
+export class NextBlockPreview extends Component {
   renderNextBlock() {
     return (
       <RenderMatrix
@@ -36,4 +36,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(NextBlock);
+export default connect(mapStateToProps)(NextBlockPreview);

@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import Score from "./Score";
 import Level from "./Level";
 import Lines from "./Lines";
-import NextBlock from "./NextBlock";
+import NextBlockPreview from "./NextBlockPreview";
 
 export class SidePanel extends Component {
   render() {
@@ -11,7 +11,7 @@ export class SidePanel extends Component {
       <div className="side-panel">
         <Score />
         <Level />
-        <NextBlock />
+        <NextBlockPreview />
         <Lines />
       </div>
     );
