@@ -23,6 +23,7 @@ class TouchLeft extends Component {
     //   }
     // });
     this.handleClick = this.handleClick.bind(this);
+    this.handleOnTouchStart = this.handleOnTouchStart.bind(this);
   }
 
   handleClick(e) {
@@ -41,8 +42,30 @@ class TouchLeft extends Component {
     }
   }
 
+  handleOnTouchStart(e) {
+    if (!this.props.paused) {
+      e.preventDefault();
+      this.props.moveLeft(1);
+      if (
+        detectHit(
+          this.props.field,
+          this.props.activeBlock,
+          this.props.xValue,
+          this.props.yValue
+        )
+      )
+        this.props.moveRight(1);
+    }
+  }
+
   render() {
-    return <div id="move-left" onClick={this.handleClick}></div>;
+    return (
+      <div
+        id="move-left"
+        onClick={this.handleClick}
+        onTouchStart={this.handleOnTouchStart}
+      ></div>
+    );
   }
 }
 
