@@ -31,19 +31,6 @@ class App extends Component {
     //   }
     // });
 
-    const hardDrop = document.getElementById("hard-drop");
-    hardDrop.addEventListener("mousedown", (e) => {
-      if (this.props.paused === false && this.props.gameOver === false) {
-        e.preventDefault();
-        while (!this.hitDetected()) {
-          this.props.moveDown();
-        }
-        this.props.moveUp();
-        clearDropInterval();
-        setDropInterval(this.props.dropTimer);
-      }
-    });
-
     window.addEventListener("keydown", (e) => {
       switch (e.code) {
         case "KeyA":
@@ -100,8 +87,6 @@ class App extends Component {
               this.props.moveDown();
             }
             this.props.moveUp();
-            clearDropInterval();
-            setDropInterval(this.props.dropTimer);
           }
           break;
         case "ArrowUp":
