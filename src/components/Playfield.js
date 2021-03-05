@@ -63,7 +63,7 @@ export class Playfield extends Component {
                 "keyup",
                 (evt) => {
                   evt.preventDefault();
-                  clearDropInterval();
+                  clearInterval(dropIntervalId);
                   setDropInterval(this.props.dropTimer);
                   this.props.setSoftDroppingTo(false);
                 },
@@ -71,7 +71,7 @@ export class Playfield extends Component {
                   once: true,
                 }
               );
-              clearDropInterval();
+              clearInterval(dropIntervalId);
               setDropInterval(50);
               this.props.setSoftDroppingTo(true);
             }
@@ -146,7 +146,7 @@ export class Playfield extends Component {
         case "KeyO":
           e.preventDefault();
           this.props.reset();
-          clearDropInterval();
+          clearInterval(dropIntervalId);
           this.props.setActiveBlock(this.props.currentSequenceOfBlocks[0]);
           setDropInterval(this.props.dropTimer);
           break;
@@ -155,14 +155,14 @@ export class Playfield extends Component {
           if (this.props.gameOver) {
             e.preventDefault();
             this.props.reset();
-            clearDropInterval();
+            clearInterval(dropIntervalId);
             this.props.setActiveBlock(this.props.currentSequenceOfBlocks[0]);
             setDropInterval(this.props.dropTimer);
           }
           if (this.props.paused) {
             e.preventDefault();
             this.props.unpause();
-            clearDropInterval();
+            clearInterval(dropIntervalId);
             setDropInterval(this.props.dropTimer);
           }
           break;
@@ -171,10 +171,10 @@ export class Playfield extends Component {
           if (!this.props.gameOver) {
             if (!this.props.paused) {
               this.props.pause();
-              clearDropInterval();
+              clearInterval(dropIntervalId);
             } else {
               this.props.unpause();
-              clearDropInterval();
+              clearInterval(dropIntervalId);
               setDropInterval(this.props.dropTimer);
             }
           }
@@ -184,10 +184,10 @@ export class Playfield extends Component {
       }
     });
 
-    let intervalId;
+    let dropIntervalId;
 
     const setDropInterval = (dropRate) => {
-      intervalId = setInterval(() => {
+      dropIntervalId = setInterval(() => {
         this.props.moveDown();
         if (this.hitDetected()) {
           this.props.moveUp();
@@ -207,7 +207,7 @@ export class Playfield extends Component {
               : 20
           );
           this.props.setDropTimer(dropRateTable[this.props.level]);
-          clearDropInterval();
+          clearInterval(dropIntervalId);
           setDropInterval(this.props.dropTimer);
           if (this.props.indexOfNextBlock > 6)
             this.props.getNewSequenceOfBlocks();
@@ -217,13 +217,9 @@ export class Playfield extends Component {
         }
         if (this.hitDetected()) {
           this.props.setGameOverTo(true);
-          clearDropInterval();
+          clearInterval(dropIntervalId);
         }
       }, dropRate);
-    };
-
-    const clearDropInterval = () => {
-      clearInterval(intervalId);
     };
 
     setDropInterval(this.props.dropTimer);
