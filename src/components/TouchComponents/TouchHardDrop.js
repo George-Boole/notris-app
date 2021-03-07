@@ -26,7 +26,7 @@ class TouchHardDrop extends Component {
   }
 
   render() {
-    return <div id="hard-drop" onMouseDown={this}></div>;
+    return <div id="hard-drop"></div>;
   }
 }
 
