@@ -17,7 +17,8 @@ import {
   SET_GAME_OVER,
   ADD_TO_LINES,
   SET_LEVEL,
-} from "../constants/constants";
+  // SET_DROP_INTERVAL_ID,
+} from "../constants";
 
 const reset = () => {
   return {
@@ -137,6 +138,13 @@ const setLevel = (level) => {
   };
 };
 
+// const setDropIntervalId = (id) => {
+//   return {
+//     type: SET_DROP_INTERVAL_ID,
+//     payload: id,
+//   };
+// };
+
 export default {
   reset,
   moveLeft,
@@ -156,4 +164,5 @@ export default {
   setGameOverTo,
   addToLines,
   setLevel,
+  // setDropIntervalId,
 };

@@ -20,7 +20,8 @@ import {
   SET_GAME_OVER,
   ADD_TO_LINES,
   SET_LEVEL,
-} from "../constants/constants";
+  // SET_DROP_INTERVAL_ID,
+} from "../constants";
 
 const blankRow = [...new Array(10)].map((tile) => (tile = 0));
 const emptyField = [...new Array(18)].map((row) => (row = blankRow));
@@ -191,6 +192,15 @@ const levelReducer = (level = 0, action) => {
   }
 };
 
+// const dropIntervalIdReducer = (id = 0, action) => {
+//   switch (action.type) {
+//     case SET_DROP_INTERVAL_ID:
+//       return action.payload;
+//     default:
+//       return id;
+//   }
+// };
+
 export default combineReducers({
   field: fieldReducer,
   activeBlock: activeBlockReducer,
@@ -204,4 +214,5 @@ export default combineReducers({
   gameOver: gameOverReducer,
   lines: linesReducer,
   level: levelReducer,
+  // dropIntervalId: dropIntervalIdReducer,
 });

@@ -16,3 +16,4 @@ export const SET_SOFT_DROP = "SET_SOFT_DROP";
 export const SET_GAME_OVER = "SET_GAME_OVER";
 export const ADD_TO_LINES = "ADD_TO_LINES";
 export const SET_LEVEL = "SET_LEVEL";
+// export const SET_DROP_INTERVAL_ID = "SET_DROP_INTERVAL_ID";

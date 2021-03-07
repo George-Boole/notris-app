@@ -44,10 +44,7 @@ const zBlock = [
 
 const blocks = [iBlock, jBlock, lBlock, oBlock, sBlock, tBlock, zBlock];
 
-// const generateRandomBlock = () => {
-//   return blocks[Math.floor(Math.random() * 7)];
-// };
-
+// Returns the blocks array, shuffled.
 const generateRandomSequenceOfBlocks = () => {
   for (let i = blocks.length - 1; i > 0; i--) {
     const index = Math.floor(Math.random() * i);

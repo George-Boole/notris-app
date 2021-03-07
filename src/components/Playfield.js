@@ -15,6 +15,7 @@ import {
   countFilledRows,
   clearFilledRows,
 } from "../functions/matrixFuncs";
+// import { rotateRightHandler } from "../functions/rotateRightHandler";
 
 export class Playfield extends Component {
   componentDidMount() {
@@ -94,6 +95,8 @@ export class Playfield extends Component {
         case "KeyX":
         case "KeyE":
         case "Numpad8":
+          // rotateRightHandler(this.props, e);
+
           if (this.props.paused === false && this.props.gameOver === false) {
             e.preventDefault();
             this.props.rotateRight(this.props.activeBlock);
@@ -277,6 +280,7 @@ const mapStateToProps = (state) => {
     gameOver: state.gameOver,
     lines: state.lines,
     level: state.level,
+    // dropIntervalId: state.dropIntervalId,
   };
 };
 
@@ -299,6 +303,7 @@ const mapDispatchToProps = {
   setGameOverTo: actions.setGameOverTo,
   addToLines: actions.addToLines,
   setLevel: actions.setLevel,
+  // setDropIntervalId: actions.setDropIntervalId,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Playfield);
