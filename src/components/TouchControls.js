@@ -14,10 +14,10 @@ export class TouchControls extends Component {
       <div className="touch-controls">
         <div className="touch-controls-left-side">
           <div className="d-pad">
-            <TouchLeft />
-            <TouchRight />
             <TouchHardDrop />
             <TouchSoftDrop />
+            <TouchLeft />
+            <TouchRight />
           </div>
 
           <TouchReset />
