@@ -4,6 +4,8 @@
   display: inline-block;
   height: 5vh;
   width: 5vh;
+  height: 4.1vh;
+  width: 4.1vh;
   background-color: black;
   border-radius: 10%;
 }
