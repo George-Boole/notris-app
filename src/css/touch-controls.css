@@ -26,7 +26,7 @@
   position: absolute;
   height: 7vw;
   width: 7vw;
-  bottom: 9vw;
+  bottom: 12vw;
   left: 1vw;
   border-top-left-radius: 10%;
   border-bottom-left-radius: 10%;
@@ -134,14 +134,14 @@
 #rotate-right {
   position: absolute;
   right: 2vw;
-  bottom: 2vw;
+  bottom: 5vw;
   height: 8vw;
   width: 8vw;
   border-radius: 50%;
 }
 
 #rotate-right {
-  bottom: 13vw;
+  bottom: 16vw;
 }
 
 #rotate-left:before,
