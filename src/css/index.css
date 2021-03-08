@@ -23,49 +23,49 @@ body {
   position: relative;
   font-size: 0%;
   margin: auto;
-  height: 90vmin;
-  width: 50vmin;
+  height: 90vh;
+  width: 50vh;
   background-color: skyblue;
-  border: 1vmin solid violet;
+  border: 1vh solid violet;
 }
 
 .empty-tile {
   box-sizing: border-box;
   position: relative;
   display: inline-block;
-  height: 5vmin;
-  width: 5vmin;
+  height: 5vh;
+  width: 5vh;
 }
 
 .key-bindings {
   text-align: center;
-  font-size: 2.5vmin;
+  font-size: 2.5vh;
   margin: 0.1rem;
-  height: 7vmin;
+  height: 7vh;
 }
 
 .pause-screen {
   box-sizing: border-box;
   position: absolute;
-  padding-top: 11vmin;
+  padding-top: 11vh;
   color: violet;
   text-align: center;
   text-shadow: 1px 1px 0px black;
   top: 20%;
-  width: 50vmin;
-  height: 50vmin;
+  width: 50vh;
+  height: 50vh;
   background-color: #0000008a;
   border-radius: 12.5%;
 }
 
 .pause-screen h3 {
   margin: 0;
-  font-size: 12vmin;
+  font-size: 12vh;
   font-weight: normal;
 }
 
 .pause-screen span {
-  font-size: 5vmin;
+  font-size: 5vh;
 }
 
 .game-over {
@@ -75,54 +75,122 @@ body {
   text-align: center;
   text-shadow: 1px 1px 0px black;
   top: 20%;
-  width: 50vmin;
-  height: 50vmin;
+  width: 50vh;
+  height: 50vh;
   background-color: #0000008a;
   border-radius: 12.5%;
 }
 
 .game-over h3 {
   margin: 0;
-  font-size: 12vmin;
+  font-size: 12vh;
   font-weight: normal;
 }
 
 .game-over span {
-  font-size: 5vmin;
+  font-size: 5vh;
 }
 
 .side-panel {
   position: absolute;
-  top: -1vmin;
-  left: 50.17vmin;
-  width: 23vmin;
+  top: -1vh;
+  left: 50.17vh;
+  width: 23vh;
   display: block;
   background-color: skyblue;
   color: violet;
   text-align: center;
-  border: 1vmin solid violet;
+  border: 1vh solid violet;
 }
 
 .side-panel > div:not(:last-child) {
-  border-bottom: 1vmin solid violet;
+  border-bottom: 1vh solid violet;
 }
 
 .side-panel > div > .heading {
   margin: 0;
-  font-size: 5vmin;
-  /* border-bottom: 0.5vmin solid violet; */
+  font-size: 5vh;
+  /* border-bottom: 0.5vh solid violet; */
 }
 
 .side-panel > div > .num {
   margin: 0;
-  font-size: 8vmin;
+  font-size: 8vh;
 }
 
 .side-panel .score .num {
-  font-size: 6vmin;
+  font-size: 6vh;
 }
 
 .score,
 .next-block {
   display: none;
+}
+
+@media (orientation: portrait) {
+  .playfield {
+    height: 45vh;
+    width: 25vh;
+    border: 0.5vh solid violet;
+  }
+
+  .empty-tile {
+    height: 2.5vh;
+    width: 2.5vh;
+  }
+
+  .key-bindings {
+    font-size: 1.3vh;
+    height: 3.5vh;
+  }
+
+  .pause-screen {
+    padding-top: 5.5vh;
+    width: 25vh;
+    height: 25vh;
+  }
+
+  .pause-screen h3 {
+    font-size: 6vh;
+  }
+
+  .pause-screen span {
+    font-size: 2.5vh;
+  }
+
+  .game-over {
+    width: 25vh;
+    height: 25vh;
+  }
+
+  .game-over h3 {
+    font-size: 6vh;
+  }
+
+  .game-over span {
+    font-size: 2.5vh;
+  }
+
+  .side-panel {
+    top: -0.5vh;
+    left: 25.1vh;
+    width: 11.5vh;
+    border: 0.5vh solid violet;
+  }
+
+  .side-panel > div:not(:last-child) {
+    border-bottom: 0.5vh solid violet;
+  }
+
+  .side-panel > div > .heading {
+    font-size: 2.5vh;
+  }
+
+  .side-panel > div > .num {
+    font-size: 4vh;
+  }
+
+  .side-panel .score .num {
+    font-size: 3vh;
+  }
 }

@@ -12,17 +12,22 @@ export class TouchControls extends Component {
   render() {
     return (
       <div className="touch-controls">
-        <TouchLeft />
-        <TouchRight />
-        <TouchHardDrop />
-        <TouchSoftDrop />
+        <div className="touch-controls-left-side">
+          <div className="d-pad">
+            <TouchLeft />
+            <TouchRight />
+            <TouchHardDrop />
+            <TouchSoftDrop />
+          </div>
 
-        <TouchReset />
+          <TouchReset />
+        </div>
+        <div className="touch-controls-right-side">
+          <TouchPause />
 
-        <TouchPause />
-
-        <TouchRotateRight />
-        <TouchRotateLeft />
+          <TouchRotateRight />
+          <TouchRotateLeft />
+        </div>
       </div>
     );
   }

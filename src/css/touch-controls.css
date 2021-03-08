@@ -1,21 +1,33 @@
-.touch-controls {
-  position: absolute;
+.touch-controls-left-side {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 97vh;
+  width: 24vw;
 }
 
-.touch-controls > div {
+#reset,
+.d-pad > div,
+.touch-controls-right-side > div {
+  position: absolute;
   background-color: violet;
   filter: drop-shadow(0 0 5px black);
 }
 
-#move-left,
-#move-right,
-#soft-drop,
-#hard-drop {
-  position: fixed;
-  height: 12vmin;
-  width: 12vmin;
-  bottom: 23vmin;
-  left: 5vmin;
+.d-pad {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 67%;
+}
+
+.d-pad > div {
+  position: absolute;
+  height: 7vw;
+  width: 7vw;
+  bottom: 9vw;
+  left: 1vw;
   border-top-left-radius: 10%;
   border-bottom-left-radius: 10%;
   border-top-right-radius: 4%;
@@ -32,31 +44,73 @@
   top: 0;
   width: 0;
   height: 0;
-  border-top: 6vmin solid transparent;
-  border-left: 6vmin solid violet;
-  border-bottom: 6vmin solid transparent;
+  border-top: 3.5vw solid transparent;
+  border-left: 3.5vw solid violet;
+  border-bottom: 3.5vw solid transparent;
 }
 
 #hard-drop {
-  transform: rotateZ(90deg) translate(-150%, -150%);
+  transform: rotateZ(90deg) translate(-110%, -110%);
 }
 
 #move-right {
-  transform: rotateZ(180deg) translate(-300%, 0);
+  transform: rotateZ(180deg) translate(-220%, 0);
 }
 
 #soft-drop {
-  transform: rotateZ(-90deg) translate(-150%, 150%);
+  transform: rotateZ(-90deg) translate(-110%, 110%);
 }
 
-#pause,
 #reset {
-  position: fixed;
-  bottom: 65vmin;
-  right: 6vmin;
-  height: 10vmin;
-  width: 18vmin;
+  position: absolute;
+  height: 4vw;
+  width: 7vw;
   border-radius: 500px;
+  top: 5vh;
+  left: 1vw;
+}
+
+#reset:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 2vw;
+  width: 2vw;
+  border-radius: 50%;
+  /* background-color: transparent; */
+  border: 0.4vw solid skyblue;
+  border-top: 0.4vw solid transparent;
+}
+
+#reset:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -140%);
+  height: 1.1vw;
+  width: 0.4vw;
+  background-color: skyblue;
+  border-radius: 100px;
+}
+
+.touch-controls-right-side {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 97vh;
+  width: 1vw;
+}
+
+#pause {
+  position: absolute;
+  height: 4vw;
+  width: 7vw;
+  border-radius: 500px;
+  top: 5vh;
+  right: 1vw;
 }
 
 #pause:before,
@@ -66,8 +120,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-150%, -50%);
-  height: 7vmin;
-  width: 2vmin;
+  height: 3vw;
+  width: 0.8vw;
   background-color: skyblue;
   border-radius: 100px;
 }
@@ -76,51 +130,18 @@
   transform: translate(50%, -50%);
 }
 
-#reset {
-  top: 5vmin;
-  left: 5vmin;
-  /* left: 29vmin;
-  transform: translateX(-50%); */
-}
-
-#reset:before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  height: 5vmin;
-  width: 5vmin;
-  border-radius: 50%;
-  /* background-color: transparent; */
-  border: 1vmin solid skyblue;
-  border-top: 1vmin solid violet;
-}
-
-#reset:after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -140%);
-  height: 3vmin;
-  width: 1vmin;
-  background-color: skyblue;
-  border-radius: 100px;
-}
-
 #rotate-left,
 #rotate-right {
-  position: fixed;
-  right: 5vmin;
-  bottom: 5vmin;
-  height: 20vmin;
-  width: 20vmin;
+  position: absolute;
+  right: 2vw;
+  bottom: 2vw;
+  height: 8vw;
+  width: 8vw;
   border-radius: 50%;
 }
 
 #rotate-right {
-  bottom: 35vmin;
+  bottom: 13vw;
 }
 
 #rotate-left:before,
@@ -130,12 +151,12 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  height: 8vmin;
-  width: 8vmin;
+  height: 3vw;
+  width: 3vw;
   border-radius: 50%;
   /* background-color: transparent; */
-  border: 2vmin solid skyblue;
-  border-bottom: 2vmin solid violet;
+  border: 1vw solid skyblue;
+  border-bottom: 1vw solid violet;
 }
 
 #rotate-left:after,
@@ -144,8 +165,8 @@
   position: absolute;
   width: 0;
   height: 0;
-  border-bottom: 5vmin solid skyblue;
-  border-left: 5vmin solid transparent;
+  border-bottom: 2vw solid skyblue;
+  border-left: 2vw solid transparent;
   top: 50%;
   right: 59%;
 }
@@ -153,4 +174,96 @@
 #rotate-right:after {
   left: 59%;
   transform: rotateY(180deg);
+}
+
+@media (orientation: portrait) {
+  .touch-controls-left-side {
+    top: 48.5vh;
+    height: 48.5vh;
+    width: 50vw;
+  }
+
+  .d-pad > div {
+    height: 14vw;
+    width: 14vw;
+    bottom: 22vw;
+    left: 4vw;
+  }
+
+  #move-left:before,
+  #move-right:before,
+  #soft-drop:before,
+  #hard-drop:before {
+    border-top: 7vw solid transparent;
+    border-left: 7vw solid violet;
+    border-bottom: 7vw solid transparent;
+  }
+
+  #reset {
+    height: 8vw;
+    width: 14vw;
+    top: -43.5vh;
+    left: 2vw;
+  }
+
+  #reset:before {
+    height: 4vw;
+    width: 4vw;
+    border: 0.8vw solid skyblue;
+    border-top: 0.8vw solid transparent;
+  }
+
+  #reset:after {
+    height: 2.2vw;
+    width: 0.8vw;
+  }
+
+  .touch-controls-right-side {
+    top: 48.5vh;
+    height: 48.5vh;
+    width: 50vw;
+  }
+
+  #pause {
+    height: 8vw;
+    width: 14vw;
+    top: 0;
+    right: 4vw;
+  }
+
+  #pause:before,
+  #pause:after {
+    height: 6vw;
+    width: 1.6vw;
+  }
+
+  #rotate-left,
+  #rotate-right {
+    right: 4vw;
+    bottom: 8vw;
+    height: 16vw;
+    width: 16vw;
+  }
+
+  #rotate-right {
+    bottom: 22vw;
+  }
+
+  #rotate-left {
+    right: 25vw;
+  }
+
+  #rotate-left:before,
+  #rotate-right:before {
+    height: 6vw;
+    width: 6vw;
+    border: 2vw solid skyblue;
+    border-bottom: 2vw solid violet;
+  }
+
+  #rotate-left:after,
+  #rotate-right:after {
+    border-bottom: 4vw solid skyblue;
+    border-left: 4vw solid transparent;
+  }
 }

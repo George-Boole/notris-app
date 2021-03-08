@@ -2,8 +2,8 @@
   position: relative;
   box-sizing: border-box;
   display: inline-block;
-  height: 5vmin;
-  width: 5vmin;
+  height: 5vh;
+  width: 5vh;
   background-color: black;
   border-radius: 10%;
 }
@@ -43,4 +43,11 @@
 
 .z {
   background-color: #0fffaf;
+}
+
+@media (orientation: portrait) {
+  .filled-tile {
+    height: 2.5vh;
+    width: 2.5vh;
+  }
 }
