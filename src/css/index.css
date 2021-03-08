@@ -92,7 +92,7 @@ body {
   top: -1vh;
   left: 50.17vh;
   left: 41.17vh;
-  height: 73.8vh;
+  /* height: 73.8vh; */
   width: 23vh;
   display: block;
   background-color: skyblue;
@@ -172,7 +172,7 @@ body {
   .side-panel {
     top: -0.5vh;
     left: 25.1vh;
-    height: 45vh;
+    /* height: 45vh; */
 
     width: 11.5vh;
     border: 0.5vh solid violet;
