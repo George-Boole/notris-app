@@ -186,7 +186,7 @@
   .d-pad > div {
     height: 14vw;
     width: 14vw;
-    bottom: 22vw;
+    bottom: 36vw;
     left: 4vw;
   }
 
@@ -240,13 +240,13 @@
   #rotate-left,
   #rotate-right {
     right: 4vw;
-    bottom: 8vw;
+    bottom: 22vw;
     height: 16vw;
     width: 16vw;
   }
 
   #rotate-right {
-    bottom: 22vw;
+    bottom: 36vw;
   }
 
   #rotate-left {
